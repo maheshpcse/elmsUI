@@ -42,7 +42,7 @@ export class ProfileViewComponent implements OnInit {
       countryName: 'India',
       zipCode: 530002,
       phoneNumber: 8886197968,
-      dateOfBirth: '1997-04-08',
+      dateOfBirth: '1997-08-04',
       designation: 'Software Developer',
       department: 'IT/Software',
       registrationDate: '2019-01-08'

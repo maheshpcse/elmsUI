@@ -39,10 +39,10 @@ export class UpdateProfileComponent implements OnInit {
     this.countryName = 'India';
     this.zipCode = 530002;
     this.phoneNumber = 8886197968;
-    this.dateOfBirth = '1997-04-08';
+    this.dateOfBirth = '1997-08-04';
     this.designation = 'Software Developer';
     this.department = 'IT/Software';
-    this.registrationDate = '2019-01-08';
+    this.registrationDate = '2019-08-01';
   }
 
 }

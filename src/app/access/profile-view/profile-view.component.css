@@ -113,7 +113,7 @@ p {
 
 .profile-card .profile-name {
   font-size: 1.2rem;
-  color: #3249b9;
+  color: #7386d5;
   font-weight: 600;
   text-align: center;
 }
@@ -121,6 +121,12 @@ p {
 .profile-card .profile-designation {
   font-size: 13px;
   color: #777;
+  text-align: center;
+}
+
+.profile-card .profile-department {
+  font-size: 10px;
+  color: #999;
   text-align: center;
 }
 
@@ -210,4 +216,9 @@ span.about-item-detail > button {
 
 a.about-item-edit {
   float: right;
+  color: #7386d5 !important;
+}
+
+a {
+  color: #7386d5 !important;
 }
