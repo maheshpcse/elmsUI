@@ -1,0 +1,106 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <app-sidemenu></app-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <app-header></app-header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-8">
+                                    <h4 class="title">Leave History <small>(All Leaves Data)</small></h4>
+                                </div>
+                                <div class="col-xs-4 text-right">
+                                    <a href="#" class="btn btn-sm btn-primary">Create New</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body table-responsive mt-2">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Full Name</th>
+                                        <th>Age</th>
+                                        <th>Job Title</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Vincent Williamson</td>
+                                        <td>31</td>
+                                        <td>iOS Developer</td>
+                                        <td>
+                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
+                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Taylor Reyes</td>
+                                        <td>22</td>
+                                        <td>UI/UX Developer</td>
+                                        <td>
+                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
+                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Justin Block</td>
+                                        <td>26</td>
+                                        <td>Frontend Developer</td>
+                                        <td>
+                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
+                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sean Guzman</td>
+                                        <td>26</td>
+                                        <td>Web Designer</td>
+                                        <td>
+                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
+                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Keith Carter</td>
+                                        <td>20</td>
+                                        <td>Graphic Designer</td>
+                                        <td>
+                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
+                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col col-xs-4">Page 1 of 5</div>
+                                <div class="col-xs-8">
+                                    <ul class="pagination hidden-xs pull-right">
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                    </ul>
+                                    <ul class="pagination visible-xs pull-right">
+                                        <li><a href="#">{{ "<" }}</a></li>
+                                        <li><a href="#">{{ ">" }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

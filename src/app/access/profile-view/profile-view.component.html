@@ -1,0 +1,157 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <app-sidemenu></app-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <app-header></app-header>
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="profile-card">
+                                <div class="profile-header">
+                                    <div class="cover-image">
+                                        <img src="../../../assets/images/mountains2.jpg" alt="_empPic"
+                                            class="img img-fluid">
+                                    </div>
+                                    <div class="user-image">
+                                        <img src="../../../assets/images/emp-pic2.png" alt="_empPic1" class="img">
+                                    </div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="profile-name">
+                                        {{ employeeData?.firstName }} {{ employeeData?.middleName }} {{
+                                        employeeData?.lastName }}
+                                    </div>
+                                    <div class="profile-designation">{{ employeeData?.designation }}</div>
+                                    <div class="profile-department">{{ employeeData?.department }}</div>
+                                    <p class="profile-description">
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                        tempor.
+                                    </p>
+                                    <ul class="profile-info-list">
+                                        <a href="" class="profile-info-list-item">
+                                            <i class="mdi mdi-eye"></i>Timeline
+                                        </a>
+                                        <a href="" class="profile-info-list-item">
+                                            <i class="mdi mdi-bookmark-check"></i>Saved
+                                        </a>
+                                        <a href="" class="profile-info-list-item">
+                                            <i class="mdi mdi-movie"></i>Medias
+                                        </a>
+                                        <a href="" class="profile-info-list-item">
+                                            <i class="mdi mdi-account"></i>About
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-title font-weight-bold">About</p>
+                                <hr>
+                                <p class="card-description">User Information</p>
+                                <ul class="about">
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-account icon-sm"></i></span>
+                                        <span class="about-item-name">Full Name</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">
+                                            {{ employeeData?.firstName }} {{ employeeData?.middleName }} 
+                                            {{ employeeData?.lastName }}
+                                        </span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-mail-ru icon-sm"></i></span>
+                                        <span class="about-item-name">Username</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">{{ employeeData?.userName }}</span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-format-align-left icon-sm"></i></span>
+                                        <span class="about-item-name">Date of Joining</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">
+                                            {{ employeeData?.registrationDate | date: 'MMMM dd, yyyy' }}
+                                        </span>
+                                    </li>
+                                </ul>
+                                <p class="card-description">Contact Information</p>
+                                <ul class="about">
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-phone icon-sm"></i></span>
+                                        <span class="about-item-name">Phone</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">+91 {{ employeeData?.phoneNumber }}</span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-map-marker icon-sm"></i></span>
+                                        <span class="about-item-name">Address</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">
+                                            {{ employeeData?.address }}, {{ employeeData?.cityName }}, {{
+                                            employeeData?.stateName }}, {{ employeeData?.countryName }}, {{
+                                            employeeData?.zipCode }}.
+                                        </span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-email-outline icon-sm"></i></span>
+                                        <span class="about-item-name">Email</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">
+                                            <a href="">{{ employeeData?.emailId }}</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <p class="card-description">Basic Information</p>
+                                <ul class="about">
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-cake icon-sm"></i></span>
+                                        <span class="about-item-name">Date of Birth</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">
+                                            {{ employeeData?.dateOfBirth | date:'MMMM dd, yyyy' }}
+                                        </span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-account icon-sm"></i></span>
+                                        <span class="about-item-name">Gender</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">Male</span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-clipboard-account icon-sm"></i></span>
+                                        <span class="about-item-name">Profession</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">Employee</span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-water icon-sm"></i></span>
+                                        <span class="about-item-name">Blood Group</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">AB+</span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-human-male-female icon-sm"></i></span>
+                                        <span class="about-item-name">Marital Status</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">Single</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+</div>

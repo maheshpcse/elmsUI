@@ -44,3 +44,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Vs code setting Files
+slnx.sqlite
+VSWorkspaceState.json
+project-colors.json
+.suo
