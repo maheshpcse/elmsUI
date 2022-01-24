@@ -64,10 +64,10 @@ p {
   border: none;
   transition: all 0.3s ease 0s;
 }
-.panel .panel-heading .btn:hover {
+/* .panel .panel-heading .btn:hover {
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.08);
-}
+} */
 .panel .panel-body .table {
   margin: 0;
   border: 1px solid #e7e7e7;
@@ -134,4 +134,12 @@ p {
 }
 a, li {
   text-decoration: none !important;
+}
+.panel-heading .create-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.panel-heading .create-btn a:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }

@@ -7,7 +7,7 @@
 
         <app-header></app-header>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
@@ -16,7 +16,7 @@
                                 <div class="col col-xs-8">
                                     <h4 class="title">Leave History <small>(All Leaves Data)</small></h4>
                                 </div>
-                                <div class="col-xs-4 text-right">
+                                <div class="col-xs-4 text-right create-btn">
                                     <a href="#" class="btn btn-sm btn-primary">Create New</a>
                                 </div>
                             </div>
@@ -25,63 +25,41 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr class="active">
-                                        <th>Full Name</th>
-                                        <th>Age</th>
-                                        <th>Job Title</th>
+                                        <th>S No.</th>
+                                        <th>Leave Type</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Reason</th>
+                                        <th>Applied Date</th>
+                                        <th>Remarks</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Vincent Williamson</td>
-                                        <td>31</td>
-                                        <td>iOS Developer</td>
+                                    <tr *ngFor="let item of empLeavesData; let i=index;">
+                                        <td>{{ i+1 }}</td>
+                                        <td>{{ item?.leaveTypeName }}</td>
+                                        <td>{{ item?.leaveStartDate | date: 'MMMM dd, yyyy' }}</td>
+                                        <td>{{ item?.leaveEndDate | date: 'MMMM dd, yyyy' }}</td>
+                                        <td>{{ item?.leaveReason }}</td>
+                                        <td>{{ item?.leaveAppliedDate | date: 'MMMM dd, yyyy' }}</td>
+                                        <td>{{ item?.remarks }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
-                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                            <span class="badge badge-warning" *ngIf="item?.status === 2">Pending</span>
+                                            <span class="badge badge-success" *ngIf="item?.status === 1">Approved</span>
+                                            <span class="badge badge-danger" *ngIf="item?.status === 0">Rejected</span>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Taylor Reyes</td>
-                                        <td>22</td>
-                                        <td>UI/UX Developer</td>
                                         <td>
-                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
-                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Justin Block</td>
-                                        <td>26</td>
-                                        <td>Frontend Developer</td>
-                                        <td>
-                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
-                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sean Guzman</td>
-                                        <td>26</td>
-                                        <td>Web Designer</td>
-                                        <td>
-                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
-                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keith Carter</td>
-                                        <td>20</td>
-                                        <td>Graphic Designer</td>
-                                        <td>
-                                            <a href="#" class="btn btn-default"><em class="fa fa-edit"></em></a>
-                                            <a href="#" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                            <a href="#" class="btn btn-primary"><em class="fa fa-edit"></em></a>
+                                            <a href="#" class="btn btn-danger ml-2"><em class="fa fa-trash"></em></a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="panel-footer">
-                            <div class="row">
+                            <div class="row d-flex align-items-center">
                                 <div class="col col-xs-4">Page 1 of 5</div>
                                 <div class="col-xs-8">
                                     <ul class="pagination hidden-xs pull-right">
