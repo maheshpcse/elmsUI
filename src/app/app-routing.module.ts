@@ -12,6 +12,7 @@ import { UpdateProfileComponent } from './access/update-profile/update-profile.c
 import { ChangePasswordComponent } from './access/change-password/change-password.component';
 import { LeavesHistoryComponent } from './leaves/leaves-history/leaves-history.component';
 import { ApplyLeavesComponent } from './leaves/apply-leaves/apply-leaves.component';
+import { ForgotPasswordComponent } from './access/forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,11 @@ const routes: Routes = [
     path: 'change-password',
     // canActivate: [AuthGuardService],
     component: ChangePasswordComponent
+  },
+  {
+    path: 'forgot-password',
+    // canActivate: [AuthGuardService],
+    component: ForgotPasswordComponent
   },
   {
     path: 'settings',

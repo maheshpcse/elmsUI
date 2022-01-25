@@ -72,6 +72,9 @@
         <li [ngClass]="{'active': href === '/change-password'}">
             <a [routerLink]="['/change-password']">Change Password</a>
         </li>
+        <li [ngClass]="{'active': href === '/forgot-password'}">
+            <a [routerLink]="['/forgot-password']">Forgot Password</a>
+        </li>
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" [attr.aria-expanded]="setAriaExpandFun()" class="dropdown-toggle">Leaves</a>
             <ul class="collapse list-unstyled" id="pageSubmenu" [ngClass]="{'show': href === '/apply-leave' || href === '/leave-history'}">

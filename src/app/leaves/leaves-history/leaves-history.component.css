@@ -44,11 +44,11 @@ p {
   font-family: "Poppins", sans-serif;
 }
 .panel {
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 0;
 }
 .panel .panel-heading {
-  padding: 20px 15px 0;
+  /* padding: 20px 15px 0; */
 }
 .panel .panel-heading .title {
   color: #222;
@@ -100,7 +100,7 @@ p {
 }
 .panel .panel-footer {
   background-color: #fff;
-  padding: 0 15px 5px;
+  padding: 10px;
   border: none;
 }
 .panel .panel-footer .col {
@@ -142,4 +142,18 @@ a, li {
 .panel-heading .create-btn a:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+
+.panel-body table thead {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.panel-body table thead tr th {
+  vertical-align: middle !important;
+}
+.panel-body table tbody {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
 }

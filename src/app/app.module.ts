@@ -7,6 +7,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgOtpInputModule } from  'ng-otp-input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthUserService } from './api-services/auth-user.service';
@@ -31,6 +32,7 @@ import { ChangePasswordComponent } from './access/change-password/change-passwor
 import { UpdateProfileComponent } from './access/update-profile/update-profile.component';
 import { LeavesHistoryComponent } from './leaves/leaves-history/leaves-history.component';
 import { ApplyLeavesComponent } from './leaves/apply-leaves/apply-leaves.component';
+import { ForgotPasswordComponent } from './access/forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,8 @@ import { ApplyLeavesComponent } from './leaves/apply-leaves/apply-leaves.compone
     ChangePasswordComponent,
     UpdateProfileComponent,
     LeavesHistoryComponent,
-    ApplyLeavesComponent
+    ApplyLeavesComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { ApplyLeavesComponent } from './leaves/apply-leaves/apply-leaves.compone
     CalendarModule,
     ToastrModule.forRoot(),
     AngularMultiSelectModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    NgOtpInputModule
   ],
   providers: [
     AuthUserService,
