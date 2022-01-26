@@ -33,6 +33,17 @@ import { UpdateProfileComponent } from './access/update-profile/update-profile.c
 import { LeavesHistoryComponent } from './leaves/leaves-history/leaves-history.component';
 import { ApplyLeavesComponent } from './leaves/apply-leaves/apply-leaves.component';
 import { ForgotPasswordComponent } from './access/forgot-password/forgot-password.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AddDepartmentsComponent } from './admin/departments/add-departments/add-departments.component';
+import { ManageDepartmentsComponent } from './admin/departments/manage-departments/manage-departments.component';
+import { AddLeavetypesComponent } from './admin/leavetypes/add-leavetypes/add-leavetypes.component';
+import { ManageLeavetypesComponent } from './admin/leavetypes/manage-leavetypes/manage-leavetypes.component';
+import { AddEmployeesComponent } from './admin/employees/add-employees/add-employees.component';
+import { ManageEmployeesComponent } from './admin/employees/manage-employees/manage-employees.component';
+import { AllLeavesComponent } from './admin/leave-management/all-leaves/all-leaves.component';
+import { PendingLeavesComponent } from './admin/leave-management/pending-leaves/pending-leaves.component';
+import { ApprovedLeavesComponent } from './admin/leave-management/approved-leaves/approved-leaves.component';
+import { RejectedLeavesComponent } from './admin/leave-management/rejected-leaves/rejected-leaves.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +65,18 @@ import { ForgotPasswordComponent } from './access/forgot-password/forgot-passwor
     UpdateProfileComponent,
     LeavesHistoryComponent,
     ApplyLeavesComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AdminDashboardComponent,
+    AddDepartmentsComponent,
+    ManageDepartmentsComponent,
+    AddLeavetypesComponent,
+    ManageLeavetypesComponent,
+    AddEmployeesComponent,
+    ManageEmployeesComponent,
+    AllLeavesComponent,
+    PendingLeavesComponent,
+    ApprovedLeavesComponent,
+    RejectedLeavesComponent
   ],
   imports: [
     BrowserModule,

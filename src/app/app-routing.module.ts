@@ -13,6 +13,9 @@ import { ChangePasswordComponent } from './access/change-password/change-passwor
 import { LeavesHistoryComponent } from './leaves/leaves-history/leaves-history.component';
 import { ApplyLeavesComponent } from './leaves/apply-leaves/apply-leaves.component';
 import { ForgotPasswordComponent } from './access/forgot-password/forgot-password.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AddEmployeesComponent } from './admin/employees/add-employees/add-employees.component';
+import { ManageEmployeesComponent } from './admin/employees/manage-employees/manage-employees.component';
 
 
 const routes: Routes = [
@@ -20,10 +23,6 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },
-  {
-    path: 'admin-login',
-    component: AdminLoginComponent
   },
   {
     path: 'login',
@@ -37,6 +36,7 @@ const routes: Routes = [
     path: 'home',
     component: HomePageComponent
   },
+  // ************ Employee routes ******************
   {
     path: 'view-profile',
     // canActivate: [AuthGuardService],
@@ -71,6 +71,23 @@ const routes: Routes = [
     path: 'leave-history',
     // canActivate: [AuthGuardService],
     component: LeavesHistoryComponent
+  },
+  // ************ Admin routes ******************
+  {
+    path: 'admin-login',
+    component: AdminLoginComponent
+  },
+  {
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent
+  },
+  {
+    path: 'add-employee',
+    component: AddEmployeesComponent
+  },
+  {
+    path: 'manage-employee',
+    component: ManageEmployeesComponent
   },
   {
     path: '**',

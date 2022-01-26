@@ -1,0 +1,152 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <app-sidemenu></app-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <app-header></app-header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <section id="minimal-statistics">
+                        <div class="row">
+                            <div class="col-md-12 mb-1">
+                                <h4 class="text-uppercase">Employee Overview</h4>
+                                <p>Total count of Employees Details.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6 col-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="danger">12</h3>
+                                                    <span>Employees</span>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="fa fa-user-o danger font-large-2 float-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="success">13</h3>
+                                                    <span>Departments</span>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="fa fa-graduation-cap success font-large-2 float-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="warning">14</h3>
+                                                    <span>Leave Types</span>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="fa fa-envelope-o warning font-large-2 float-right"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h4 class="title">LATEST LEAVE APPLICATIONS</h4>
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-user"></i> View All Data</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>S No.</th>
+                                        <th>Employee</th>
+                                        <th>Leave Type</th>
+                                        <th>Applied Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of empLatestLeaves; let i=index;">
+                                        <td>{{ i+1 }}</td>
+                                        <td>
+                                            <div class="user_icon">
+                                                <img src="../../../assets/images/emp-pic.png" alt="_empPic">
+                                            </div>
+                                            <span>{{ item?.employeeName | titlecase }}</span>
+                                        </td>
+                                        <td>{{ item?.leaveTypeName | titlecase }}</td>
+                                        <td>{{ item?.leaveAppliedDate | date:'MMMM dd, yyyy' }}</td>
+                                        <td>
+                                            <span class="badge badge-warning" *ngIf="item?.leaveStatus === 2">Pending</span>
+                                            <span class="badge badge-success" *ngIf="item?.leaveStatus === 1">Approved</span>
+                                            <span class="badge badge-danger" *ngIf="item?.leaveStatus === 0">Rejected</span>
+                                        </td>
+                                        <td>
+                                            <ul class="action-list">
+                                                <li><a href="#" class="btn"><em class="fa fa-trash"></em></a></li>
+                                                <li><a href="#" class="btn"><em class="fa fa-edit"></em></a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-8"> Showing <b>5</b> out of <b>25</b> entries</div>
+                                <div class="col-md-4 text-right">
+                                    <ul class="pagination hidden-xs pull-right">
+                                        <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li class="active"><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                                    </ul>
+                                    <ul class="pagination visible-xs pull-right">
+                                        <li><a href="#"><</a></li>
+                                        <li><a href="#">></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

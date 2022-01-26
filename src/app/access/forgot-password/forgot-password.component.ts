@@ -50,7 +50,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onOtpChange(event?: any) {
-    
+    console.log('event isss', event);
   }
 
 }
