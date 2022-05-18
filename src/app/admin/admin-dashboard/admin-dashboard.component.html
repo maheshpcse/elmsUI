@@ -1,11 +1,22 @@
 <div class="wrapper">
-    <!-- Sidebar  -->
-    <app-sidemenu></app-sidemenu>
+    
+    <!-- AdminSidebar  -->
+    <app-admin-sidemenu></app-admin-sidemenu>
 
     <!-- Page Content  -->
     <div id="content">
 
-        <app-header></app-header>
+        <!-- <div class="alert alert-success alert-dismissible fade show" role="alert" id="welome-alert">
+            Welcome To <strong>Employee Leave Management System</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div> -->
+
+        <!-- Admin Header -->
+        <app-admin-header></app-admin-header>
+
+        <!-- <p>{{ timerRes }}</p> -->
 
         <div class="container-fluid">
             <div class="row">
@@ -26,9 +37,13 @@
                                                 <div class="media-body text-left">
                                                     <h3 class="danger">12</h3>
                                                     <span>Employees</span>
+                                                    <span class="mt-3 d-flex align-items-baseline">
+                                                        <i class="fas fa-arrow-right"></i>
+                                                        <a [routerLink]="['/manage-employee']" class="ml-2">View</a>
+                                                    </span>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <i class="fa fa-user-o danger font-large-2 float-right"></i>
+                                                    <i class="fas fa-user danger font-large-2 float-right"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -43,9 +58,13 @@
                                                 <div class="media-body text-left">
                                                     <h3 class="success">13</h3>
                                                     <span>Departments</span>
+                                                    <span class="mt-3 d-flex align-items-baseline">
+                                                        <i class="fas fa-arrow-right"></i>
+                                                        <a [routerLink]="['/manage-department']" class="ml-2">View</a>
+                                                    </span>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <i class="fa fa-graduation-cap success font-large-2 float-right"></i>
+                                                    <i class="fas fa-graduation-cap success font-large-2 float-right"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -60,9 +79,13 @@
                                                 <div class="media-body text-left">
                                                     <h3 class="warning">14</h3>
                                                     <span>Leave Types</span>
+                                                    <span class="mt-3 d-flex align-items-baseline">
+                                                        <i class="fas fa-arrow-right"></i>
+                                                        <a [routerLink]="['/manage-leavetype']" class="ml-2">View</a>
+                                                    </span>
                                                 </div>
                                                 <div class="align-self-center">
-                                                    <i class="fa fa-envelope-o warning font-large-2 float-right"></i>
+                                                    <i class="fas fa-envelope warning font-large-2 float-right"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -82,7 +105,8 @@
                                     <h4 class="title">LATEST LEAVE APPLICATIONS</h4>
                                 </div>
                                 <div class="col-md-2 text-right">
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-user"></i> View All Data</a>
+                                    <a [routerLink]="['/all-leaves']" class="btn btn-primary btn-sm"><i
+                                            class="fas fa-user"></i> View All Data</a>
                                 </div>
                             </div>
                         </div>
@@ -90,35 +114,59 @@
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>S No.</th>
-                                        <th>Employee</th>
+                                        <th width="10%">S No.</th>
+                                        <th width="15%">Employee</th>
                                         <th>Leave Type</th>
                                         <th>Applied Date</th>
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let item of empLatestLeaves; let i=index;">
-                                        <td>{{ i+1 }}</td>
-                                        <td>
+                                        <td width="10%">{{ i+1 }}</td>
+                                        <td width="15%">
                                             <div class="user_icon">
                                                 <img src="../../../assets/images/emp-pic.png" alt="_empPic">
                                             </div>
-                                            <span>{{ item?.employeeName | titlecase }}</span>
+                                            <span>{{ item?.employeeName | titlecase | dataTruncate }}</span>
                                         </td>
                                         <td>{{ item?.leaveTypeName | titlecase }}</td>
                                         <td>{{ item?.leaveAppliedDate | date:'MMMM dd, yyyy' }}</td>
                                         <td>
-                                            <span class="badge badge-warning" *ngIf="item?.leaveStatus === 2">Pending</span>
-                                            <span class="badge badge-success" *ngIf="item?.leaveStatus === 1">Approved</span>
-                                            <span class="badge badge-danger" *ngIf="item?.leaveStatus === 0">Rejected</span>
+                                            <span class="badge badge-warning"
+                                                *ngIf="item?.leaveStatus === 2">Pending</span>
+                                            <span class="badge badge-success"
+                                                *ngIf="item?.leaveStatus === 1">Approved</span>
+                                            <span class="badge badge-danger"
+                                                *ngIf="item?.leaveStatus === 0">Rejected</span>
                                         </td>
                                         <td>
                                             <ul class="action-list">
-                                                <li><a href="#" class="btn"><em class="fa fa-trash"></em></a></li>
-                                                <li><a href="#" class="btn"><em class="fa fa-edit"></em></a></li>
+                                                <li *ngIf="item?.leaveStatus === 2">
+                                                    <a class="btn" data-toggle="modal" data-target="#approveReqModal">
+                                                        <em class="fas fa-check"></em>
+                                                    </a>
+                                                </li>
+                                                <li *ngIf="item?.leaveStatus === 2">
+                                                    <a class="btn" data-toggle="modal" data-target="#rejectReqModal">
+                                                        <em class="fas fa-times"></em>
+                                                    </a>
+                                                </li>
+                                                <!-- <li *ngIf="item?.leaveStatus === 2">
+                                                    <a [routerLink]="['/add-leavetype']" class="btn"><em
+                                                            class="fas fa-edit"></em></a>
+                                                </li> -->
+                                                <li *ngIf="item?.leaveStatus === 1 || item?.leaveStatus === 0">
+                                                    <em>No Action</em>
+                                                </li>
                                             </ul>
+                                        </td>
+                                        <td>
+                                            <a [routerLink]="['/dashboard-employee-view', item?.userId]">
+                                                View Details
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -129,19 +177,91 @@
                                 <div class="col-md-8"> Showing <b>5</b> out of <b>25</b> entries</div>
                                 <div class="col-md-4 text-right">
                                     <ul class="pagination hidden-xs pull-right">
-                                        <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
                                         <li><a href="#">1</a></li>
                                         <li><a href="#">2</a></li>
                                         <li class="active"><a href="#">3</a></li>
                                         <li><a href="#">4</a></li>
                                         <li><a href="#">5</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
                                     </ul>
                                     <ul class="pagination visible-xs pull-right">
                                         <li><a href="#"><</a></li>
                                         <li><a href="#">></a></li>
                                     </ul>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Approve leave request modal -->
+<div class="container d-flex justify-content-center action-modal">
+    <div id="approveReqModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content border-0">
+                <div class="modal-body p-0">
+                    <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                        <div class="card-header pb-0 bg-white border-0 ">
+                            <div class="row">
+                                <div class="col ml-auto"><button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div>
+                            </div>
+                            <p class="font-weight-bold mb-2">Are you sure, you want to approve leave request?</p>
+                            <p class="text-muted ">This change will reflect in your portal after sometime.</p>
+                        </div>
+                        <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label class="field-required" for="reason">Reason</label>
+                                    <textarea class="form-control" name="reasonname" id="reasonid" cols="3" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3 justify-content-end no-gutters">
+                                <div class="col-auto"><button type="button" class="btn btn-light text-muted"
+                                        data-dismiss="modal">Cancel</button></div>
+                                <div class="col-auto"><button type="button" class="btn btn-success px-4"
+                                        data-dismiss="modal">Approve</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reject leave request modal -->
+<div class="container d-flex justify-content-center action-modal">
+    <div id="rejectReqModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content border-0">
+                <div class="modal-body p-0">
+                    <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                        <div class="card-header pb-0 bg-white border-0 ">
+                            <div class="row">
+                                <div class="col ml-auto"><button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div>
+                            </div>
+                            <p class="font-weight-bold mb-2">Are you sure, you want to reject leave request?</p>
+                            <p class="text-muted ">This change will reflect in your portal after sometime.</p>
+                        </div>
+                        <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                            <div class="row">
+                                <div class="col-12 form-group">
+                                    <label class="field-required" for="reason">Reason</label>
+                                    <textarea class="form-control" name="reasonname" id="reasonid" cols="3" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3 justify-content-end no-gutters">
+                                <div class="col-auto"><button type="button" class="btn btn-light text-muted"
+                                        data-dismiss="modal">Cancel</button></div>
+                                <div class="col-auto"><button type="button" class="btn btn-danger px-4"
+                                        data-dismiss="modal">Reject</button></div>
                             </div>
                         </div>
                     </div>

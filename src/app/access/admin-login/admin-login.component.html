@@ -1,30 +1,39 @@
-<div class="form-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <form class="form-horizontal">
-                    <h4>Employee Leave System</h4>
-                    <hr>
-                    <span class="heading">Admin Login</span>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email or Username">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="form-group help">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        <i class="fa fa-lock"></i>
-                        <a href="#" class="fa fa-question-circle"></a>
-                    </div>
-                    <div class="form-group">
-                        <div class="main-checkbox">
-                            <input type="checkbox" value="None" id="checkbox1" name="check">
-                            <label for="checkbox1"></label>
-                        </div>
-                        <span class="text">Remember me</span>
-                        <button type="submit" class="btn btn-default">log in</button>
-                    </div>
-                </form>
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="card">
+        <div class="p-3 border-bottom d-flex align-items-center justify-content-center">
+            <h5>Login to Employee Leave System</h5>
+        </div>
+        <div class="p-3 px-4 py-4 border-bottom">
+            <div class="form">
+                <input type="text" class="form-control" name="emailname" id="emailid" placeholder="Email/Username"
+                    [ngClass]="{'is-focus': emailid.invalid && (emailid.dirty || emailid.touched)}"
+                    [(ngModel)]="nameOrEmail" #emailid="ngModel" autocomplete="off" required />
+                <span *ngIf="emailid.invalid && (emailid.dirty || emailid.touched)">
+                    <span class="is-error" *ngIf="emailid?.errors?.required">Email ID or Username is required.</span>
+                </span>
             </div>
+            <div class="form mt-3">
+                <input type="password" class="form-control" name="pwdname" id="pwdid" placeholder="Password"
+                    [ngClass]="{'is-focus': pwdname.invalid && (pwdname.dirty || pwdname.touched)}"
+                    [(ngModel)]="password" #pwdname="ngModel" autocomplete="off" (keyup.enter)="adminLogin()" 
+                    (keypress.enter)="adminLogin()" required />
+                <span *ngIf="pwdname.invalid && (pwdname.dirty || pwdname.touched)">
+                    <span class="is-error" *ngIf="pwdname?.errors?.required">Password is required.</span>
+                </span>
+            </div>
+            <button class="btn btn-danger btn-block continue mt-3" [disabled]="spinner || setFormDisable()"
+                (click)="adminLogin()">
+                <!-- <span *ngIf="spinner"><i class="fas fa-spinner fa-spin"></i></span>
+                <span *ngIf="!spinner">Continue</span> -->
+                <span *ngIf="!spinner"><i class="fas fa-sign-in-alt"></i></span>
+                <span *ngIf="spinner"><i class="fas fa-spinner fa-spin"></i></span>
+                <span class="ml-2" *ngIf="!spinner">Continue</span>
+                <span class="ml-2" *ngIf="spinner">Validating...</span>
+            </button>
+        </div>
+        <div class="link d-flex">
+            <span><i class="fas fa-chevron-left"></i></span>
+            <a [routerLink]="['/home']" class="ml-2">Back To Home Page</a>
         </div>
     </div>
 </div>

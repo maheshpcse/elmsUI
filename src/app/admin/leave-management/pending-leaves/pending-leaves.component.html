@@ -1,1 +1,116 @@
-<p>pending-leaves works!</p>
+<div class="wrapper">
+    
+    <!-- Admin Sidebar  -->
+    <app-admin-sidemenu></app-admin-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <!-- Admin Header  -->
+        <app-admin-header></app-admin-header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-6">
+                                    <h4 class="title">PENDING LEAVES <span>List</span></h4>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <!-- <form class="inline-form">
+                                        <label class="radio-inline btn btn-primary" (click)="onChangeRoute('/all-leaves')">
+                                            <input type="radio" name="optradio">All
+                                        </label>
+                                        <label class="radio-inline btn btn-success">
+                                            <input type="radio" name="optradio" checked="true">Pending
+                                        </label>
+                                        <label class="radio-inline btn btn-warning" (click)="onChangeRoute('/approved-leaves')">
+                                            <input type="radio" name="optradio">Approved
+                                        </label>
+                                        <label class="radio-inline btn btn-danger" (click)="onChangeRoute('/rejected-leaves')">
+                                            <input type="radio" name="optradio">Rejected
+                                        </label>
+                                    </form> -->
+                                    <ul class="option-list">
+                                        <li class="radio-button" (click)="onChangeRoute('/all-leaves')">
+                                            <input type="radio" name="option1" id="op1">
+                                            <label for="op1">All</label>
+                                        </li>
+                                        <li class="radio-button">
+                                            <input type="radio" name="option1" id="op2" checked>
+                                            <label for="op2">Pending</label>
+                                        </li>
+                                        <li class="radio-button" (click)="onChangeRoute('/approved-leaves')">
+                                            <input type="radio" name="option1" id="op3">
+                                            <label for="op3">Approved</label>
+                                        </li>
+                                        <li class="radio-button" (click)="onChangeRoute('/rejected-leaves')">
+                                            <input type="radio" name="option1" id="op4">
+                                            <label for="op4">Rejected</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr class="active">
+                                        <th>S No.</th>
+                                        <th>Employee ID</th>
+                                        <th>Employee Name</th>
+                                        <th>Leave Type Name</th>
+                                        <th>Leave Applied Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of empPendingLeaves; let i=index;">
+                                        <td>{{ i+1 }}</td>
+                                        <td>{{ item?.employeeId }}</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../../../assets/images/emp-pic.png" alt="_empImage"
+                                                    class="img-responsive rounded-circle" width="35" height="35">
+                                                <span class="ml-2">{{ item?.employeeName | titlecase }}</span>
+                                            </div>
+                                        </td>
+                                        <td>{{ item?.leaveTypeName }}</td>
+                                        <td>{{ item?.leaveAppliedDate | date: 'MMMM dd, yyyy' }}</td>
+                                        <td>
+                                            <span class="badge badge-warning" *ngIf="item?.status === 0">Pending</span>
+                                        </td>
+                                        <td><a href="#" class="btn btn-default">Manage</a></td>
+                                        <td class="td-action-view">
+                                            <a [routerLink]="['/leave-management-view', item?.userId]" class="more">View Details</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-4">Page 1 of 5</div>
+                                <div class="col-md-8">
+                                    <ul class="pagination hidden-xs pull-right">
+                                        <li><a href="#"><</a></li>
+                                        <li class="active ml-5"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li class="ml-5"><a href="#">></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

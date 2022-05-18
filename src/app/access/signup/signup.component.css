@@ -8,15 +8,34 @@
 }
 
 .topBtn {
+  cursor: pointer;
   margin-top: 15px;
   text-transform: uppercase;
   background-color: #7386d5;
+  border: 1px solid #7386d5;
+}
+
+.topBtn:hover {
+  background-color: cornflowerblue;
+}
+
+.stepBtn {
+  cursor: pointer;
+  margin-top: 15px;
+  text-transform: uppercase;
+  background-color: #ccc;
+  border: 1px solid #ccc;
+}
+
+.stepBtn:hover {
+  background-color: #999;
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #7386d5 !important;
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
 
 :-ms-input-placeholder {
@@ -33,6 +52,7 @@
     CONTENT STYLE
 ----------------------------------------------------- */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -66,4 +86,19 @@ p {
   transition: all 0.3s;
   height: 100%;
   margin-left: 250px;
+}
+
+input {
+  padding: 5% !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.is-error {
+  color: crimson;
+  font-size: 0.8em;
+}
+
+.is-focus {
+  color: crimson;
+  border: 1px solid crimson;
 }

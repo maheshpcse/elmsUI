@@ -8,7 +8,7 @@ declare var $: any;
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  emailId: any = null;
+  email: any = null;
   employeeId: any = null;
   otpNum: any = null;
   newPassword: any = null;

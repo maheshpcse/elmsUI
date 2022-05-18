@@ -9,36 +9,94 @@
 
         <div class="container">
             <div class="row mgTp">
-                <form class="col-md-6 offset-md-3">
+                <form class="col-md-6 offset-md-3" *ngIf="formStep == 1">
                     <h3 class="title">Employee Signup</h3>
                     <hr class="divisor">
                     <div class="form-group">
-                        <label for="firstname">Firstname</label>
-                        <input type="email" class="form-control" name="firstname" id="firstnameid" placeholder="Type firstname">
+                        <label for="firstname" class="field-required">First Name</label>
+                        <input type="email" class="form-control" name="firstname" id="firstnameid"
+                            placeholder="Type First Name"
+                            [ngClass]="{'is-focus': firstname.invalid && (firstname.dirty || firstname.touched)}"
+                            [(ngModel)]="firstName" #firstname="ngModel" autocomplete="off" required>
+                        <span *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                            <span class="is-error" *ngIf="firstname?.errors?.required">First Name is required.</span>
+                        </span>
                     </div>
                     <div class="form-group">
-                        <label for="lastname">Lastname</label>
-                        <input type="email" class="form-control" name="lastname" id="lastnameid" placeholder="Type lastname">
+                        <label for="lastname" class="field-required">Last Name</label>
+                        <input type="email" class="form-control" name="lastname" id="lastnameid"
+                            placeholder="Type Last Name"
+                            [ngClass]="{'is-focus': lastname.invalid && (lastname.dirty || lastname.touched)}"
+                            [(ngModel)]="lastName" #lastname="ngModel" autocomplete="off" required>
+                        <span *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                            <span class="is-error" *ngIf="lastname?.errors?.required">Last Name is required.</span>
+                        </span>
                     </div>
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="email" class="form-control" name="username" id="usernameid" placeholder="Type username">
+                        <label for="username" class="field-required">User Name</label>
+                        <input type="email" class="form-control" name="username" id="usernameid"
+                            placeholder="Type User Name"
+                            [ngClass]="{'is-focus': username.invalid && (username.dirty || username.touched)}"
+                            [(ngModel)]="userName" #username="ngModel" autocomplete="off" required>
+                        <span *ngIf="username.invalid && (username.dirty || username.touched)">
+                            <span class="is-error" *ngIf="username?.errors?.required">User Name is required.</span>
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <button type="submit" class="btn btn-primary stepBtn" [disabled]="setFormOneDisable()"
+                            (click)="selectStep(2)">
+                            <span>Next</span>
+                            <span class="ml-2"><i class="fas fa-chevron-right"></i></span>
+                        </button>
+                    </div>
+                </form>
+                <form class="col-md-6 offset-md-3" *ngIf="formStep == 2">
+                    <h3 class="title">Employee Signup</h3>
+                    <hr class="divisor">
+                    <div class="form-group">
+                        <label for="emailid" class="field-required">Email ID</label>
+                        <input type="email" class="form-control" name="emailname" id="emailid"
+                            placeholder="Type Email ID"
+                            [ngClass]="{'is-focus': emailname.invalid && (emailname.dirty || emailname.touched)}"
+                            [(ngModel)]="email" #emailname="ngModel" autocomplete="off" required>
+                        <span *ngIf="emailname.invalid && (emailname.dirty || emailname.touched)">
+                            <span class="is-error" *ngIf="emailname?.errors?.required">Email ID is required.</span>
+                        </span>
                     </div>
                     <div class="form-group">
-                        <label for="emailid">Email Id</label>
-                        <input type="email" class="form-control" name="emailname" id="emailid" placeholder="Type email id">
+                        <label for="password" class="field-required">Password</label>
+                        <input type="password" class="form-control" name="pwdname" id="pwdid"
+                            placeholder="Type Password"
+                            [ngClass]="{'is-focus': pwdname.invalid && (pwdname.dirty || pwdname.touched)}"
+                            [(ngModel)]="password" #pwdname="ngModel" autocomplete="off" required>
+                        <span *ngIf="pwdname.invalid && (pwdname.dirty || pwdname.touched)">
+                            <span class="is-error" *ngIf="pwdname?.errors?.required">Password is required.</span>
+                        </span>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="pwdname" id="pwdid" placeholder="Type password">
+                        <label for="confirmpassword" class="field-required">Confirm Password</label>
+                        <input type="password" class="form-control" name="cnfpwdname" id="cnfpwdid"
+                            placeholder="Type Confirm Password"
+                            [ngClass]="{'is-focus': cnfpwdname.invalid && (cnfpwdname.dirty || cnfpwdname.touched)}"
+                            [(ngModel)]="confirmPassword" #cnfpwdname="ngModel" autocomplete="off" required>
+                        <span *ngIf="cnfpwdname.invalid && (cnfpwdname.dirty || cnfpwdname.touched)">
+                            <span class="is-error" *ngIf="cnfpwdname?.errors?.required">Confirm Password is required.</span>
+                            <span class="is-error" *ngIf="password !== confirmPassword">Password and Confirm Password is not same.</span>
+                        </span>
                     </div>
-                    <div class="form-group">
-                        <label for="confirmpassword">Confirm Password</label>
-                        <input type="password" class="form-control" name="cnfpwdname" id="cnfpwdid" placeholder="Type confirm password">
+                    <div class="d-flex align-items-baseline">
+                        <button type="submit" class="btn btn-primary stepBtn" (click)="selectStep(1)">
+                            <span><i class="fas fa-chevron-left"></i></span>
+                            <span class="ml-2">Previous</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary topBtn ml-2"
+                            [disabled]="spinner || setFormTwoDisable()" (click)="userSignup()">
+                            <span *ngIf="!spinner"><i class="fas fa-user-plus"></i></span>
+                            <span *ngIf="spinner"><i class="fas fa-spinner fa-spin"></i></span>
+                            <span class="ml-2" *ngIf="!spinner">Sign Up</span>
+                            <span class="ml-2" *ngIf="spinner">Validating...</span>
+                        </button>
                     </div>
-                    <button type="submit" class="btn btn-primary topBtn">
-                        <i class="fa fa-sign-in"></i> Sign Up
-                    </button>
                 </form>
             </div>
         </div>

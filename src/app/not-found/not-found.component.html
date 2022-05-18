@@ -1,1 +1,173 @@
 <p>not-found works!</p>
+
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <form action="">
+                <div class="form-group">
+                    <label for="file">Upload Files :</label>
+                    <input type="file" class="form-control" name="filename" id="fileid" multiple="multiple" #fileName (change)="onSelectFiles($event)">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="container-fluid"> -->
+    <!-- <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group d-flex align-items-baseline">
+                <button class="btn btn-action-search rounded-circle" type="button"
+                    (click)="openSearch()" [ngClass]="{'activeBtn': isSearch}">
+                    <span><i class="fas fa-search"></i></span>
+                </button>
+                <input type="search" class="form-control" name="searchname" id="searchnameid"
+                placeholder="Quick search">
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card card-block" appCustom>
+                <h4 class="card-title">
+                    What did the cheese say when it looked in the mirror?
+                </h4>
+                <p class="card-text" [style.display]="'none'">
+                    Hello-me (Halloumi)
+                </p>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Multi-slot content projection</h2>
+
+            Question:
+            <ng-content select="[question]"></ng-content>
+
+            Answer:
+            <ng-content select="[answer]"></ng-content>
+
+            Default:
+            <ng-content></ng-content>
+        </div>
+    </div> -->
+    <!-- <div class="row mt-5">
+        <div class="col-md-3">
+            <a [routerLink]="['/admin-dashboard']">Dashboard</a>
+        </div>
+    </div> -->
+    <!-- <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="form-group d-flex justify-content-between align-items-baseline">
+                <input type="text" class="form-control" name="newname" id="newid" placeholder="Type here" 
+                    [(ngModel)]="newValue" (keypress.enter)="changeValue()" (keyup.enter)="changeValue()">
+                <button class="btn btn-outline-primary ml-2" type="submit" [disabled]="!newValue" 
+                    (click)="changeValue()">Submit</button>
+                <button class="btn btn-outline-dark ml-2" type="reset" (click)="resetValue()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6 d-flex justify-content-start align-items-baseline">
+            <span>Leave Type</span>
+            <span class="ml-5">:</span>
+            <p class="ml-5">{{ originalValue | dataTransfer }}</p>
+        </div>
+    </div> -->
+    <!-- <div class="row mt-5">
+        <span>{{ number1 | myCustomPurePipe }}</span>
+        <span>{{ number2 | myCustomPurePipe }}</span>
+        <span>{{ number1 | myCustomImpurePipe }}</span>
+        <span>{{ number2 | myCustomImpurePipe }}</span>        
+    </div> -->
+<!-- </div> -->
+
+
+<!-- <div class="container">
+    <div class="team-single">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="team-single-text padding-50px-left sm-no-padding-left">
+                    <h4 class="font-size38 sm-font-size32 xs-font-size30">Buckle Giarza</h4>
+                    <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                        officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit
+                        voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
+                        inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit,
+                        sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
+                        quisquam est, qui dolorem ipsum voluptatem.</p>
+                    <div class="contact-info-section margin-40px-tb">
+                        <ul class="list-style9 no-margin">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-graduation-cap text-orange"></i>
+                                        <strong class="margin-10px-left text-orange">Degree:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>Master's Degrees</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="far fa-gem text-yellow"></i>
+                                        <strong class="margin-10px-left text-yellow">Exp.:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>4 Year in Education</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="far fa-file text-lightred"></i>
+                                        <strong class="margin-10px-left text-lightred">Courses:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>Design Category</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-map-marker-alt text-green"></i>
+                                        <strong class="margin-10px-left text-green">Address:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>Regina ST, London, SK.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-mobile-alt text-purple"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-purple">Phone:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p>(+44) 123 456 789</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <i class="fas fa-envelope text-pink"></i>
+                                        <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <p><a href="javascript:void(0)">addyour@emailhere</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

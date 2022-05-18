@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rejected-leaves',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RejectedLeavesComponent implements OnInit {
 
-  constructor() { }
+  empRejectedLeaves: any = [
+    {userId: 3, employeeId: 'EMP004', employeeName: 'employeeFour', leaveTypeName: 'Sick leave', leaveAppliedDate: '2021-02-10', status: 2},
+  ];
+
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  onChangeRoute(path?: any) {
+    this.router.navigate([`${path}`]);
   }
 
 }

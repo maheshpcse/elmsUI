@@ -3,32 +3,46 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor() { }
+    constructor() { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = sessionStorage.getItem('token');
-    const id = sessionStorage.getItem('user_id');
-    const username = sessionStorage.getItem('username');
-    const email = sessionStorage.getItem('email');
-    const role = sessionStorage.getItem('role');
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (!token) {
-      return next.handle(req);
+        console.log('called intercept()');
+
+        const role = sessionStorage.getItem('role');
+        const token = sessionStorage.getItem('token');
+        let user_id: any = null;
+        let email: any = null;
+        let username: any = null; 
+        
+        if (role === 'employee') {
+            user_id = sessionStorage.getItem('userId');
+            username = sessionStorage.getItem('userName');
+            email = sessionStorage.getItem('email');
+        } else {
+            user_id = sessionStorage.getItem('adminId');
+            username = sessionStorage.getItem('displayName');
+            email = sessionStorage.getItem('email');
+        }
+
+        if (!token) {
+            return next.handle(request);
+        }
+
+        const Request = request.clone({
+            // headers: request.headers.set('Authorization', [`Bearer ${token}`, user_id, role]),
+            headers: request.headers.set('Authorization', [`${token}`, user_id, role]),
+            setHeaders: {
+                user_id,
+                email,
+                username
+            }
+        });
+
+        return next.handle(Request);
     }
-
-    const req1 = req.clone({
-      headers: req.headers.set('Authorization', [`Bearer ${token}`, id, role]),
-      setHeaders: {
-        id,
-        email,
-        username
-      }
-    });
-
-    return next.handle(req1);
-  }
 }

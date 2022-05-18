@@ -1,0 +1,183 @@
+/* ---------------------------------------------------
+    ADD DEPARTMENTS STYLE
+----------------------------------------------------- */
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  height: 100%;
+  margin-left: 250px;
+  margin-top: 100px;
+}
+
+.dept-card .btn {
+  display: inline-block;
+  line-height: 50px;
+  padding: 0 50px;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  font-family: inherit;
+}
+
+.dept-card .btn--radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.dept-card .btn--radius-2 {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.dept-card .btn--red {
+  background: mediumseagreen;
+}
+
+.dept-card .btn--red:hover {
+  background: seagreen;
+}
+
+h2.title {
+  margin-left: 3%;
+}
+
+input {
+  height: 45px !important;
+}
+
+textarea {
+  /* height: 45px !important; */
+  /* line-height: 50px; */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  /* padding: 0 22px; */
+  font-size: 16px;
+  color: #555;
+}
+
+
+/* add department modal css styles */
+.modal .modal-header {
+  color: white;
+  background-color: seagreen;
+  border-color: seagreen;
+  border-bottom: none;
+}
+
+.modal .modal-header button {
+  color: white;
+}
+
+.modal .modal-body p {
+  font-size: 1em;
+}
+
+.modal .modal-body span {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.modal .btn-secondary {
+  cursor: pointer;
+  color: white;
+  background-color: #d1d1d1 !important;
+  border: none;
+}
+
+.modal .btn-primary {
+  cursor: pointer;
+  color: white;
+  background-color: mediumseagreen !important;
+  border: none;
+}
+
+.modal .btn-primary:hover {
+  background-color: seagreen !important;
+}
+
+.modal .modal-body .fa-circle-notch {
+  color: mediumseagreen;
+  font-size: 3em;
+  text-align: center !important;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid mediumseagreen;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: mediumseagreen transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

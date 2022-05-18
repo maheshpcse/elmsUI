@@ -8,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileViewComponent implements OnInit {
 
   employeeData: any = {
+    userId: null,
     employeeId: null,
     firstName: null,
     middleName: null,
     lastName: null,
     userName: null,
-    emailId: null,
+    email: null,
     address: null,
     cityName: null,
     stateName: null,
@@ -23,19 +24,20 @@ export class ProfileViewComponent implements OnInit {
     dateOfBirth: null,
     designation: null,
     department: null,
-    registrationDate: null
+    dateOfJoining: null
   };
 
   constructor() {}
 
   ngOnInit() {
     this.employeeData = {
+      userId: 1,
       employeeId: 'EMP001',
       firstName: 'Pachapalam',
       middleName: 'Mahesh',
       lastName: '',
       userName: 'Mahesh Pm',
-      emailId: 'maheshpm1599@gmail.com',
+      email: 'maheshpm1599@gmail.com',
       address: 'Ram nagar, GVMC',
       cityName: 'Visakapatnam',
       stateName: 'Andhra Pradesh',
@@ -45,7 +47,7 @@ export class ProfileViewComponent implements OnInit {
       dateOfBirth: '1997-08-04',
       designation: 'Software Developer',
       department: 'IT/Software',
-      registrationDate: '2019-01-08'
+      dateOfJoining: '2019-01-08'
     };
   }
   

@@ -1,0 +1,193 @@
+/* ---------------------------------------------------
+    EMPLOYEE VIEW REQUESTS PAGE STYLE
+----------------------------------------------------- */
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  height: 100%;
+  margin-left: 250px;
+  margin-top: 100px;
+}
+
+/* leave request css styles */
+.btn {
+  text-transform: capitalize !important;
+}
+
+span {
+  font-size: 1em;
+  font-weight: 200;
+}
+
+em {
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+.emp-img {
+  display: flex;
+  justify-content: center;
+}
+
+.table thead tr th {
+  color: seagreen !important;
+  vertical-align: middle;
+}
+
+.table thead tr td {
+  color: #333 !important;
+}
+
+.title {
+  font-size: 1.1em !important;
+  color: #333;
+}
+
+.btn-action-back {
+  cursor: pointer;
+  color: #ccc !important;
+}
+
+.btn-action-back:hover {
+  color: seagreen !important;
+}
+
+.btn-action-reject {
+  color: #f15e5e !important;
+  border: 1px solid #f15e5e !important;
+}
+
+.btn-action-reject:hover {
+  color: white !important;
+  background-color: #ee3535 !important;
+}
+
+.btn-action-approve {
+  color: #28a745 !important;
+  border: 1px solid #28a745 !important;
+}
+
+.btn-action-approve:hover {
+  color: white !important;
+  background-color: #0d8629 !important;
+}
+
+/* modal css styles */
+.modal-confirm {
+  color: #636363 !important;
+}
+
+.modal-confirm .modal-content {
+  border-radius: 5px !important;
+  border: none !important;
+  font-size: 14px !important;
+}
+
+.modal-confirm .modal-header {
+  border-bottom: none !important;
+  position: relative !important;
+  color: white !important;
+  background-color: mediumseagreen !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+}
+
+.modal-confirm h4 {
+  text-align: center !important;
+  font-size: 26px !important;
+}
+
+.modal-confirm .close {
+  color: white !important;
+}
+
+.modal-confirm .modal-body {
+  color: #999 !important;
+}
+
+.modal-confirm .modal-footer {
+  border: none !important;
+  text-align: center !important;
+  border-radius: 5px !important;
+  font-size: 13px !important;
+  padding: 10px 15px 25px !important;
+}
+
+.modal-confirm .modal-footer a {
+  color: #999 !important;
+}
+
+.modal-confirm .btn,
+.modal-confirm .btn:active {
+  color: #fff !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  transition: all 0.4s !important;
+  line-height: normal !important;
+  min-width: 120px !important;
+  min-height: 40px !important;
+  border-radius: 3px !important;
+  margin: 0 5px !important;
+}
+
+.modal-confirm .btn-action-no {
+  color: #c1c1c1 !important;
+  border: 1px solid #c1c1c1;
+}
+
+.modal-confirm .btn-action-no:hover {
+  color: white !important;
+  background-color: #a8a8a8 !important;
+}
+
+.modal-confirm .btn-action-yes {
+  color: #28a745 !important;
+  border: 1px solid #28a745;
+}
+
+.modal-confirm .btn-action-yes:hover {
+  color: white !important;
+  background-color: #0d8629 !important;
+}
+
+.modal-body .info {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body .info span {
+  margin-top: -10px;
+  text-align: center;
+}

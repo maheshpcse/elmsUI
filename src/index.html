@@ -7,16 +7,62 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Custom style Files (Component Related) -->
   <link rel="stylesheet" href="./assets/css/google-fonts.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.css">
+  <link rel="stylesheet" href="./assets/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="./assets/css/owl.carousel.min.css">
   <link rel="stylesheet" href="./assets/css/circle.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.css">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Main CSS-->
+  <link rel="stylesheet" href="./assets/css/main.css" media="all">
+
+  <!-- Font Awesome Icons 5 CSS -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" /> -->
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+
+  <!-- Loading-bar CSS -->
+  <link rel="stylesheet" type="text/css" href="./assets/css/loading-bar.css" />
+
+  <!-- Bs4 Toast CSS -->
+  <link rel="stylesheet" type="text/css" href="./assets/css/bs4Toast.css">
 </head>
 
 <body>
   <app-root></app-root>
 
+  <!-- Jquery Files -->
   <script src="./assets/js/jquery-2.1.1.js"></script>
   <script src="./assets/js/popper.min.js"></script>
+
+  <!-- Custom Jquery Files (Component Related) -->
+  <!-- Main JS-->
+  <script src="./assets/js/main.js"></script>
+
+  <!-- Global JS -->
+  <!-- <script src="./assets/js/global.js"></script> -->
+
+  <!-- Loading-bar JS -->
+  <script type="text/javascript" src="./assets/js/loading-bar.js"></script>
+
+  <!-- Bootstrap-show-notification JS -->
+  <script src="./node_modules/bootstrap-show-notification/src/bootstrap-show-notification.js"></script>
+  <script>
+    function showAlertmsg() {
+      $("#button-show-simple").click(function () {
+        console.log('clicked!');
+        $.showNotification({ body: "Hello Notification!" });
+      });
+    }
+  </script>
+
+  <!-- Bs4 Toast JS -->
+  <script src="./assets/js/bs4-toast.js"></script>
 </body>
 
 </html>

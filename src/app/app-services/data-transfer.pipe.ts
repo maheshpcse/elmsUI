@@ -6,7 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DataTransferPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
-    return null;
+    if (!value) {
+      return value;
+    } else {
+      value = value.toString().toUpperCase();
+      return value;
+    }
+    // return null;
   }
 
 }

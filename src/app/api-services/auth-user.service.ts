@@ -1,70 +1,79 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { APIURL } from './apiurl.service';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthUserService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
+    public role: any = sessionStorage.getItem('role');
+    bSubject: any = new BehaviorSubject('default');
 
-  // ******************* Mysql Database *****************************
-  userLogin(data: any) {
-    return this.http.post<any>(APIURL.USER_LOGIN, data);
-  }
+    constructor(
+        private http: HttpClient,
+        public router: Router
+    ) { }
 
-  userSignup(data: any) {
-    return this.http.post<any>(APIURL.USER_SIGNUP, data);
-  }
+    // ******************* Mysql Database *****************************
 
-  userReSignIn(data: any) {
-    return this.http.post<any>(APIURL.USER_RESIGNIN, data);
-  }
-
-  getUserToken() {
-    return sessionStorage.getItem('token');
-  }
-
-  getUserId() {
-    return sessionStorage.getItem('user_id');
-  }
-
-  getUserRole() {
-    return sessionStorage.getItem('role');
-  }
-
-  getUserPayload() {
-    const token = this.getUserToken();
-    if (token) {
-      // const userPayload = atob(token.split('.')[1]);
-      // return JSON.parse(userPayload);
-      const userPayload = {
-        user_id: sessionStorage.getItem('user_id'),
-        email: sessionStorage.getItem('email'),
-        username: sessionStorage.getItem('username'),
-        exp: new Date().getTime()
-      };
-      return userPayload;
-    } else {
-      return null;
+    // EMPLOYEE authentication API Service's
+    userLogin(data: any) {
+        return this.http.post<any>(APIURL.EMPLOYEE_LOGIN, data);
     }
-  }
 
-  isLoggedIn(): boolean {
-    const userPayload = this.getUserPayload();
-    if (userPayload) {
-      return userPayload.exp > Date.now() / 1000;
-    } else {
-      return false;
+    userSignup(data: any) {
+        return this.http.post<any>(APIURL.EMPLOYEE_SIGNUP, data);
     }
-  }
 
-  isLoggedOut() {
-    localStorage.clear();
-    sessionStorage.clear();
-  }
+    userReSignIn(data: any) {
+        return this.http.post<any>(APIURL.EMPLOYEE_RESIGNIN, data);
+    }
+
+    getUserToken() {
+        return sessionStorage.getItem('token');
+    }
+
+    getUserId() {
+        if (this.getUserRole() === 'employee') {
+            return sessionStorage.getItem('userId');
+        } else {
+            return sessionStorage.getItem('adminId');
+        }
+    }
+
+    getUserRole() {
+        return sessionStorage.getItem('role');
+    }
+
+    getUserPayload() {
+        const token = this.getUserToken();
+        if (token) {
+            const userPayload = atob(token.split('.')[1]);
+            return JSON.parse(userPayload);
+        } else {
+            return null;
+        }
+    }
+
+    isLoggedIn(): boolean {
+        const userPayload = this.getUserPayload();
+        if (userPayload) {
+            return userPayload.exp > Date.now() / 1000;
+        } else {
+            return false;
+        }
+    }
+
+    isLoggedOut(role?: any) {
+        localStorage.clear();
+        sessionStorage.clear();
+        if (role == 'employee') {
+            this.router.navigate(['/login']);
+        } else {
+            this.router.navigate(['/admin-login']);
+        }
+    }
 }

@@ -16,7 +16,7 @@
                             <div class="profile-card">
                                 <div class="profile-header">
                                     <div class="cover-image">
-                                        <img src="../../../assets/images/mountains2.jpg" alt="_empPic"
+                                        <img src="../../../assets/images/infotech2.png" alt="_empPic"
                                             class="img img-fluid">
                                     </div>
                                     <div class="user-image">
@@ -64,7 +64,7 @@
                                         <span class="about-item-name">Full Name</span>
                                         <span>:</span>
                                         <span class="about-item-detail">
-                                            {{ employeeData?.firstName }} {{ employeeData?.middleName }} 
+                                            {{ employeeData?.firstName }} {{ employeeData?.middleName }}
                                             {{ employeeData?.lastName }}
                                         </span>
                                     </li>
@@ -79,7 +79,7 @@
                                         <span class="about-item-name">Date of Joining</span>
                                         <span>:</span>
                                         <span class="about-item-detail">
-                                            {{ employeeData?.registrationDate | date: 'MMMM dd, yyyy' }}
+                                            {{ employeeData?.dateOfJoining | date: 'MMMM dd, yyyy' }}
                                         </span>
                                     </li>
                                 </ul>
@@ -106,7 +106,7 @@
                                         <span class="about-item-name">Email</span>
                                         <span>:</span>
                                         <span class="about-item-detail">
-                                            <a href="">{{ employeeData?.emailId }}</a>
+                                            <a href="">{{ employeeData?.email }}</a>
                                         </span>
                                     </li>
                                 </ul>

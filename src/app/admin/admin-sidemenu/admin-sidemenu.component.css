@@ -1,0 +1,326 @@
+/* ---------------------------------------------------
+    ADMIN SIDEBAR STYLE
+----------------------------------------------------- */
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+#admin-sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: mediumseagreen;
+  color: #fff;
+  transition: all 0.3s;
+  height: 100%;
+  position: fixed;
+}
+
+#admin-sidebar.active {
+  margin-left: -250px;
+}
+
+#admin-sidebar .admin-sidebar-header {
+  padding: 20px;
+  background: seagreen;
+}
+
+#admin-sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid seagreen;
+}
+
+#admin-sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#admin-sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#admin-sidebar ul li a:hover {
+  color: limegreen;
+  background: #fff;
+}
+
+#admin-sidebar ul li.active>a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: mediumseagreen;
+}
+
+#admin-sidebar ul li.active {
+  color: limegreen !important;
+  background-color: #fff !important;
+}
+
+#admin-sidebar ul li.isActive {
+  color: limegreen !important;
+  background-color: #fff !important;
+}
+
+#admin-sidebar ul li a.active {
+  color: limegreen !important;
+  background-color: #fff !important;
+}
+
+#admin-sidebar ul li a.isActive {
+  color: limegreen !important;
+  background-color: #fff !important;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: mediumseagreen;
+}
+
+ul.CTAs {
+  cursor: pointer;
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.download {
+  cursor: pointer;
+  background: #fff;
+  color: mediumseagreen;
+}
+
+a.article,
+a.article:hover {
+  background: limegreen !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+  #admin-sidebar {
+    margin-left: -250px;
+  }
+
+  #admin-sidebar.active {
+    margin-left: 0;
+  }
+
+  #sidebarCollapse span {
+    display: none;
+  }
+}
+
+.emp-data {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.emp-data span {
+  color: white;
+  font-size: 1.1em;
+}
+
+.emp-data em {
+  color: #fff;
+  font-size: 0.8em;
+}
+
+/* auto logout css styles */
+.modal-box {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.modal-backdrop.in {
+  opacity: 0;
+}
+
+.modal-box .modal {
+  top: 90px !important;
+}
+
+.modal-box .modal-dialog {
+  width: 570px;
+  margin: 20px auto 0;
+}
+
+.modal-box .modal-dialog .modal-content {
+  text-align: center;
+  border: none;
+}
+
+.modal-box .modal-dialog .modal-content .close {
+  color: #c7c5c5;
+  font-size: 28px;
+  text-shadow: none;
+  line-height: 33px;
+  height: 33px;
+  width: 33px;
+  opacity: 1;
+  position: absolute;
+  left: auto;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  transition: all 0.3s;
+}
+
+.modal-box .modal-dialog .modal-content .close span {
+  margin: -1px 0 0 0;
+  display: block;
+}
+
+.modal-box .modal-dialog .modal-content .close:hover {
+  color: seagreen;
+}
+
+.modal-box .modal-dialog .modal-content .close:focus {
+  outline: none;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body {
+  padding: 30px 20px 15px !important;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .title {
+  color: #333;
+  font-size: 22px;
+  text-transform: capitalize;
+  margin: 0 0 10px;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .description {
+  color: #999;
+  font-size: 1.2em;
+  line-height: 22px;
+  margin: 0 10px 25px;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .log-time {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .log-time .p1 {
+  color: #333 !important;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .log-time .p2 {
+  color: #999 !important;
+  font-size: 1.1em;
+  letter-spacing: 2px;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .show-time .display {
+  color: seagreen !important;
+  border: 1px dashed seagreen !important;
+  padding: 10px 20px 10px 20px;
+  font-size: 1.1em;
+  letter-spacing: 5px;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .show-time .blue {
+  color: cornflowerblue !important;
+  border: 1px dashed cornflowerblue !important;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .show-time .red {
+  color: crimson !important;
+  border: 1px dashed crimson !important;
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .subscribe,
+.modal-box .modal-dialog .modal-content .modal-body .cancel {
+  color: #fff;
+  background: mediumseagreen;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  width: 50%;
+  padding: 12px 10px;
+  margin: 0 auto 20px;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .subscribe:hover {
+  background: #373a3e;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .cancel {
+  color: mediumseagreen;
+  background-color: #f5f5f5;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .cancel:hover {
+  color: #333;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) inset;
+}
+
+@media only screen and (max-width: 576px) {
+  .modal-dialog {
+    width: 93% !important;
+  }
+
+  .modal-box .modal-dialog .modal-content .modal-body .box-content {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+}

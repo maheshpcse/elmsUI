@@ -1,149 +1,134 @@
-.form-bg {
-  background: #00b4ef;
-  margin: 0;
-  padding: 0;
-  place-content: center;
-  min-height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+body {
+  background-color: #eee;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
 }
 
-.form-horizontal {
-  background: #fff;
-  padding-bottom: 40px;
-  border-radius: 15px;
-  text-align: center;
-  margin-top: 150px;
+.container {
+  height: 100vh;
 }
 
-.form-horizontal .heading {
-  display: block;
-  font-size: 35px;
-  font-weight: 700;
-  padding: 35px 0;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 30px;
-}
-
-.form-horizontal .form-group {
-  padding: 0 40px;
-  margin: 0 0 25px 0;
-  position: relative;
-}
-
-.form-horizontal .form-control {
-  background: #f0f0f0;
+.card {
+  width: 400px;
   border: none;
-  border-radius: 20px;
+}
+
+.form-control {
+  border: 2px solid #bdc1d2;
+  font-size: 13px;
+  height: 48px;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #f7bfd9;
+  outline: 0;
   box-shadow: none;
-  padding: 0 20px 0 45px;
-  height: 40px;
-  transition: all 0.3s ease 0s;
 }
 
-.form-horizontal .form-control:focus {
-  background: #e0e0e0;
-  box-shadow: none;
-  outline: 0 none;
-}
-
-.form-horizontal .form-group i {
-  position: absolute;
-  top: 12px;
-  left: 60px;
-  font-size: 17px;
-  color: #c8c8c8;
-  transition: all 0.5s ease 0s;
-}
-
-.form-horizontal .form-control:focus + i {
-  color: #00b4ef;
-}
-
-.form-horizontal .fa-question-circle {
-  display: inline-block;
-  position: absolute;
-  top: 12px;
-  right: 60px;
-  font-size: 20px;
-  color: #808080;
-  transition: all 0.5s ease 0s;
-}
-
-.form-horizontal .fa-question-circle:hover {
-  color: #000;
-}
-
-.form-horizontal .main-checkbox {
-  float: left;
-  width: 20px;
-  height: 20px;
-  background: #11a3fc;
-  border-radius: 50%;
+.form {
   position: relative;
-  margin: 5px 0 0 5px;
-  border: 1px solid #11a3fc;
+  /* margin-bottom: 25px; */
 }
 
-.form-horizontal .main-checkbox label {
-  width: 20px;
-  height: 20px;
+.form a {
   position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
+  right: 8px;
+  bottom: 10px;
+  color: #6ca0d6;
+  font-size: 13px;
+  text-decoration: none;
+  z-index: 10;
+  background-color: #fff;
+  padding: 5px;
 }
 
-.form-horizontal .main-checkbox label:after {
-  content: "";
-  width: 10px;
-  height: 5px;
-  position: absolute;
-  top: 5px;
-  left: 4px;
-  border: 3px solid #fff;
-  border-top: none;
-  border-right: none;
-  background: transparent;
-  opacity: 0;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+.continue {
+  height: 48px;
+  font-size: 13px;
+  background-color: #e91e63;
+  border: none;
 }
 
-.form-horizontal .main-checkbox input[type="checkbox"] {
-  visibility: hidden;
+.line-text {
+  color: #cecece;
 }
 
-.form-horizontal .main-checkbox input[type="checkbox"]:checked + label:after {
-  opacity: 1;
+.line {
+  background-color: #eeeff6;
+  width: 166px;
+  height: 2px;
 }
 
-.form-horizontal .text {
-  float: left;
-  margin-left: 7px;
-  line-height: 20px;
-  padding-top: 5px;
-  text-transform: capitalize;
-}
-
-.form-horizontal .btn {
-  float: right;
+.member a {
+  color: #e91e63;
   font-size: 14px;
-  color: #fff;
-  background: #00b4ef;
-  border-radius: 30px;
-  padding: 10px 25px;
-  border: none;
-  text-transform: capitalize;
-  transition: all 0.5s ease 0s;
 }
 
-@media only screen and (max-width: 479px) {
-  .form-horizontal .form-group {
-    padding: 0 25px;
-  }
-  .form-horizontal .form-group i {
-    left: 45px;
-  }
-  .form-horizontal .btn {
-    padding: 10px 20px;
-  }
+.member span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #6ca0d6;
+}
+
+.facebook-button {
+  background-color: #39559f;
+}
+
+.facebook-button:hover {
+  background-color: #39559f;
+}
+
+.facebook:focus {
+  color: #fff;
+  background-color: #4285f4;
+  border-color: #4285f4;
+  box-shadow: none;
+}
+
+.google-button {
+  background-color: #4285f4;
+}
+
+.google-button:hover {
+  background-color: #4285f4;
+}
+
+.link {
+  cursor: pointer;
+  justify-content: center;
+  background-color: aliceblue;
+  padding: 10px;
+}
+
+.link:hover {
+  color: white !important;
+  background-color: #bdc1d2;
+}
+
+.link .fas {
+  color: #39559f;
+}
+
+.link a {
+  color: #39559f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.line a:hover {
+  color: #4285f4;
+}
+
+.is-error {
+  color: crimson;
+  font-size: 0.8em;
+}
+
+.is-focus {
+  color: crimson;
+  border: 1px solid crimson;
 }

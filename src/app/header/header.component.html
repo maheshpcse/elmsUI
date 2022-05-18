@@ -1,33 +1,105 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navBlock">
     <div class="container-fluid">
 
+        <!-- (click)="onToggleSideNav()" -->
         <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="onToggleSideNav()">
-            <i class="fa fa-align-left"></i>
+            <i class="{{ setIcon }}"></i>
+            <!-- <i class="fas fa-align-left"></i> -->
         </button>
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+        <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
-        </button>
+        </button> -->
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item" *ngIf="!authUserService.isLoggedIn()" [ngClass]="{'active': href === '/login'}">
-                    <a class="nav-link" [routerLink]="['/login']">Login</a>
+            <ul class="nav navbar-nav ml-auto align-items-baseline" *ngIf="role == '' || !role">
+                <li class="nav-item" *ngIf="role == 'admin'">
+                    <button type="button" class="icon-button">
+                        <span class="material-icons">
+                            <i class="fas fa-bell"></i>
+                        </span>
+                        <span class="icon-button__badge">{{ nfCount }}</span>
+                    </button>
                 </li>
-                <li class="nav-item" *ngIf="!authUserService.isLoggedIn()" [ngClass]="{'active': href === '/signup'}">
-                    <a class="nav-link" [routerLink]="['/signup']">Sign up</a>
+                <li class="nav-item" *ngIf="role == '' || !role">
+                    <a class="nav-link" [ngClass]="{'active': href === '/login'}" [routerLink]="['/login']">Login</a>
                 </li>
-                <li class="nav-item" *ngIf="authUserService.isLoggedIn()" [ngClass]="{'active': href === '/view-profile'}">
-                    <a class="nav-link" [routerLink]="['/view-profile']">My Profile</a>
+                <li class="nav-item" *ngIf="role == '' || !role">
+                    <a class="nav-link" [ngClass]="{'active': href === '/signup'}" [routerLink]="['/signup']">Sign
+                        up</a>
                 </li>
-                <li class="nav-item" *ngIf="authUserService.isLoggedIn()" [ngClass]="{'active': href === '/settings'}">
-                    <a class="nav-link" [routerLink]="['/settings']">Settings</a>
+            </ul>
+            <ul class="nav navbar-nav ml-auto align-items-baseline" *ngIf="role == 'employee'">
+                <li class="nav-item">
+                    <button type="button" class="icon-button">
+                        <span class="material-icons">
+                            <i class="fas fa-bell"></i>
+                        </span>
+                        <span class="icon-button__badge">{{ nfCount }}</span>
+                    </button>
                 </li>
-                <li class="nav-item" *ngIf="authUserService.isLoggedIn()">
-                    <a class="nav-link" [routerLink]="['/login']">Logout</a>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': href === '/view-profile'}"
+                        [routerLink]="['/view-profile']">
+                        My Profile
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="modal" data-target="#logoutConfirmModal">
+                    <a class="nav-link">Logout</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Logout Confirmation Modal -->
+<div class="modal-box">
+    <div class="modal fade" id="logoutConfirmModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <div class="modal-body">
+                    <h3 class="title">Session Logout Confirmation</h3>
+                    <div class="log-time mt-5">
+                        <p class="p1">Are you sure,</p>
+                        <p class="p2">you want to logout from the session?</p>
+                    </div>
+                    <div class="d-flex justify-content-around align-items-baseline mt-5">
+                        <button class="subscribe" (click)="logOut()">Yes</button>
+                        <button class="cancel ml-2" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Auto Logout Modal -->
+<div class="modal-box">
+    <div class="modal fade" id="restartConfirmModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <div class="modal-body">
+                    <h3 class="title">Session Restart Confirmation</h3>
+                    <div class="show-time d-flex justify-content-center align-items-baseline mt-5">
+                        <p class="description">Your profile session ends in</p>
+                        <span class="ml-2">:</span>
+                        <span class="display ml-3" [ngClass]="colorObj">
+                            {{ sessionTime }}
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-around align-items-baseline mt-5">
+                        <button class="subscribe" (click)="logOut()">Logout</button>
+                        <button class="cancel ml-2" (click)="reSignIn()">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

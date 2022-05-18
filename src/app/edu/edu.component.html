@@ -1,0 +1,55 @@
+<table class="table" [formGroup]="educationForm">
+    <tr>
+        <th>Qualification</th>
+        <th>Course</th>
+        <th>Specilization</th>
+        <th>University/Institute</th>
+        <th>Year of completion</th>
+        <th>persentage/grade</th>
+
+        <th>Documents</th>
+    </tr>
+    <tbody formArrayName="education">
+        <ng-container>
+            <tr *ngFor="let p of educationInfo?.controls; let i = index" [formGroupName]="i">
+                <td>
+                    <input type="text" name="qualification" formControlName="qualification_name" readonly id="" />
+                </td>
+                <td>
+                    <input type="text" name="course" formControlName="course" id="" />
+                </td>
+
+                <td>
+                    <input type="text" name="specilization" formControlName="specialization" id="" />
+                </td>
+                <td>
+                    <input type="text" name="nameOfInstitute" formControlName="institute_university" id="" />
+                </td>
+                <td>
+                    <input type="text" size="4" name="yearofCompletion" formControlName="year_of_ompletion" id="" />
+                </td>
+                <td>
+                    <input type="text" size="4" name="persentage" formControlName="grade_percentage" id="" />
+                </td>
+                <td>
+                    <input type="file" id="FUImage" multiple name="FUImage" accept="*"
+                        (change)="handleFileInput($event, p.value)" />
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+<button class="btn btn-outline-primary" (click)="submit()">Submit</button> <br /><br /><br /><br />
+
+<!-- <form [formGroup]="uploadForm" (ngSubmit)="submit()"> -->
+<!-- Select File -->
+<!-- <input type="file" accept="image/*" (change)="showPreview($event)" /> -->
+<!-- Image Preview -->
+<!-- <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+      <img [src]="imageURL" [alt]="uploadForm.value.name">
+    </div> -->
+<!-- Assign Image Alt -->
+<!-- <input formControlName="name" placeholder="Enter name">
+    <button type="submit">Submit</button>
+  </form> -->

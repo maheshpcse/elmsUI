@@ -1,0 +1,159 @@
+<div class="wrapper">
+    
+    <!-- Admin Sidebar  -->
+    <app-admin-sidemenu></app-admin-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <!-- Admin Header  -->
+        <app-admin-header></app-admin-header>
+
+        <div class="form-bg">
+            <div class="container-fluid" *ngIf="formType == 'page'">
+                <div class="row">
+                    <div class="col-6 mx-auto p-4 border-light shadow-sm">
+                        <h3 class="pb-3">
+                            <span>Upload File</span>
+                        </h3>
+                        <div class="form-style">
+                            <form>
+                                <div class="pb-2">
+                                    <button type="submit" class="btn btn-dark w-100 font-weight-bold mt-2"
+                                        (click)="selectOption('form')">
+                                        Go To Upload
+                                    </button>
+                                    <em><b>Note :</b><span class="ml-2"><em>Only excel file is valid to
+                                                upload.</em></span></em>
+                                </div>
+                            </form>
+                            <div class="sideline">OR</div>
+                            <h3 class="pb-3">Download File</h3>
+                            <div>
+                                <button type="submit" class="btn btn-primary w-100 font-weight-bold mt-2"
+                                    [disabled]="downloadSpinner" (click)="downloadExcelFile()">
+                                    <span *ngIf="downloadSpinner"><i class="fas fa-spinner fa-spin"></i></span>
+                                    <span class="ml-2" *ngIf="!downloadSpinner">Download</span>
+                                    <span class="ml-2" *ngIf="downloadSpinner">Downloading</span>
+                                </button>
+                                <em><b>Note :</b><span class="ml-2"><em>A sample empty excel file is
+                                            download.</em></span></em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" *ngIf="formType == 'form'">
+                <div class="row">
+                    <div class="col-6 mx-auto p-4 border-light shadow-sm">
+                        <form class="form-horizontal">
+                            <div class="form-title d-flex justify-content-between align-items-center">
+                                <span class="back-btn ml-2" (click)="selectOption('page')">
+                                    <i class="fas fa-arrow-alt-circle-left"></i>
+                                </span>
+                                <span class="heading">Upload A File</span>
+                                <span></span>
+                            </div>
+                            <div class="form-group mt-4">
+                                <input type="file" class="form-control" name="filename" id="fileid">
+                                <!-- <span class="upload-spin">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span> -->
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default" [disabled]="uploadSpinner" 
+                                    (click)="selectOption('table')">
+                                    <span *ngIf="uploadSpinner"><i class="fas fa-spinner fa-spin"></i></span>
+                                    <span class="ml-2" *ngIf="!uploadSpinner">UPLOAD</span>
+                                    <span class="ml-2" *ngIf="uploadSpinner">UPLOADING</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" *ngIf="formType == 'table'">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-baseline col-6">
+                                <select name="countname" id="countid" class="form-control">
+                                    <option value="1">Valid  -  05</option>
+                                    <option value="10">Invalid  -  10</option>
+                                </select>
+                                <h5 class="card-title m-b-0 ml-3">VALID EMPLOYEES</h5>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>
+                                                <label class="customcheckbox m-b-20">
+                                                    <input type="checkbox" id="mainCheckbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </th>
+                                            <th scope="col">Employee ID</th>
+                                            <th scope="col">Employee Name</th>
+                                            <th scope="col">Designation</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col" class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="customtable">
+                                        <tr *ngFor="let item of employeesList; let i=index;">
+                                            <th>
+                                                <label class="customcheckbox">
+                                                    <input type="checkbox" class="listCheckbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </th>
+                                            <td>{{ item?.emp_id | uppercase}}</td>
+                                            <td>{{ item?.fullName | titlecase}}</td>
+                                            <td>{{ item?.designation}}</td>
+                                            <td>{{ item?.department}}</td>
+                                            <td class="td-action text-center">
+                                                <span><i class="fas fa-eye"></i></span>
+                                                <span class="ml-3"><i class="fas fa-times"></i></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer text-center">
+                                <div class="page-content page-container" id="page-content">
+                                    <div class="padding">
+                                        <div class="d-flex justify-content-between align-items-baseline">
+                                            <div class="d-flex justify-content-between align-items-baseline">
+                                                <span>Entries 5 out of 20</span>
+                                                <nav class="ml-2">
+                                                    <ul class="pagination d-flex justify-content-center flex-wrap pagination-flat pagination-success">
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="#" data-abc="true"><i class="fa fa-angle-left"></i></a>
+                                                        </li>
+                                                        <li class="page-item active"><a class="page-link active" href="#" data-abc="true">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#" data-abc="true">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#" data-abc="true">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#" data-abc="true">4</a></li>
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="#" data-abc="true"><i class="fa fa-angle-right"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                            <div class=" d-flex justify-content-between align-items-baseline text-right">
+                                                <button class="btn btn-dark" (click)="selectOption('page')">Cancel</button>
+                                                <button class="btn btn-primary ml-2" (click)="selectOption('page')">Upload</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

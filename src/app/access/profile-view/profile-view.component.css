@@ -2,6 +2,7 @@
     CONTENT STYLE
 ----------------------------------------------------- */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -35,6 +36,7 @@ p {
   transition: all 0.3s;
   height: 100%;
   margin-left: 250px;
+  margin-top: 100px;
 }
 
 /* ---------------------------------------------------
@@ -52,6 +54,7 @@ body {
   line-height: 1.5;
   color: #000;
 }
+
 p {
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
@@ -69,6 +72,7 @@ p {
   border: 1px solid #e7eaed;
   border-radius: 0;
 }
+
 .card .card-description {
   margin-bottom: 0.875rem;
   font-weight: 400;
@@ -180,6 +184,7 @@ ul.about {
   color: black;
   padding: 0;
 }
+
 li.about-items {
   margin: 10px;
   font-size: 0.9rem;
@@ -201,7 +206,8 @@ span.about-item-detail {
   display: inline-flex;
   width: calc(100% - 160px);
 }
-span.about-item-detail > button {
+
+span.about-item-detail>button {
   margin-right: 10px;
 }
 
@@ -210,6 +216,7 @@ span.about-item-detail > button {
   height: 40px;
   padding: 0;
 }
+
 .btn.btn-rounded {
   border-radius: 50px;
 }

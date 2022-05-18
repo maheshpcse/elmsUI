@@ -1,0 +1,359 @@
+<div class="wrapper">
+
+    <!-- Admin Sidebar  -->
+    <app-admin-sidemenu></app-admin-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <!-- Admin Header  -->
+        <app-admin-header></app-admin-header>
+
+        <div class="container-fluid demo">
+            <div class="team-single">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="team-single-text padding-50px-left sm-no-padding-left mt-3">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <h4 class="font-size38 sm-font-size32 xs-font-size30">EMPLOYEE DETAILS</h4>
+                                <button class="btn btn-action-back" type="submit" (click)="goBackTo()">
+                                    <span><i class="fas fa-chevron-left"></i></span>
+                                    <span class="ml-2">Back</span>
+                                </button>
+                            </div>
+
+                            <br>
+
+                            <h6 class="font-size38 sm-font-size32 xs-font-size30">Personal Info :</h6>
+
+                            <div class="contact-info-section margin-40px-tb mt-5">
+                                <ul class="list-style9 no-margin">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-id-card text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Employee
+                                                            ID</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline empid">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.employeeId ? (empData.employeeId | uppercase) : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-user-shield text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Role</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline role">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.role ? empData.role : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-user text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">First
+                                                            Name</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.firstName ? empData.firstName : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-user-alt text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Middle
+                                                            Name</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.middleName ? empData.middleName : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-user text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Last
+                                                            Name</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.lastName ? empData.lastName : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-user-circle text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">User Name</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.userName ? empData.userName : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-envelope text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Email
+                                                            ID</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline email">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.email ? empData.email : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-phone-square text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Phone
+                                                            Number</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline phone">
+                                                        <span>:</span>
+                                                        <p class="ml-5"> {{ empData.phoneNumber ? ('+91 ' + empData.phoneNumber) : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-calendar-alt text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Date Of Birth</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.dateOfBirth ? (empData.dateOfBirth | date: 'MMMM dd, yyyy') : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-user-tag text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Marital Status</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.maritalStatus ? empData.maritalStatus : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-calendar-alt text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Date Of Joining</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.dateOfJoining ? (empData.dateOfJoining | date: 'MMMM dd, yyyy') : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-hospital text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Blood Group</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.bloodGroup ? empData.bloodGroup : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-user-check text-orange"></i>
+                                                        <strong
+                                                            class="margin-10px-left text-orange ml-3">Status</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline emp-status">
+                                                        <span>:</span>
+                                                        <!-- <p class="badge badge-success ml-5" *ngIf="empData.status === 1">Active</p>
+                                                        <p class="badge badge-danger ml-5" *ngIf="empData.status === 0">Inactive</p> -->
+                                                        <span class="badge badge-pill badge-success ml-5"
+                                                            *ngIf="empData.status === 1">
+                                                            Active
+                                                        </span>
+                                                        <span class="badge badge-pill badge-danger ml-5"
+                                                            *ngIf="empData.status === 0">
+                                                            InActive
+                                                        </span>
+                                                        <span class="ml-5" *ngIf="!empData.status && empData.status !== 0">
+                                                            -
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h6 class="font-size38 sm-font-size32 xs-font-size30 mt-5">Address Info :</h6>
+
+                            <div class="contact-info-section margin-40px-tb mt-5">
+                                <ul class="list-style9 no-margin">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-address-card text-orange"></i>
+                                                        <strong
+                                                            class="margin-10px-left text-orange ml-3">Address</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.address ? empData.address : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-city text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">City</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.cityName ? empData.cityName : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-city text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">State</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.stateName ? empData.stateName : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-flag text-orange"></i>
+                                                        <strong
+                                                            class="margin-10px-left text-orange ml-3">Country</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.countryName ? empData.countryName : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-map text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Zip
+                                                            Code</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.zipCode ? empData.zipCode : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h6 class="font-size38 sm-font-size32 xs-font-size30 mt-5">Professional Info :</h6>
+
+                            <div class="contact-info-section margin-40px-tb mt-5">
+                                <ul class="list-style9 no-margin">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-graduation-cap text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Designation</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.designation ? empData.designation : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row d-flex">
+                                                    <div class="col-md-4 d-flex align-items-baseline">
+                                                        <i class="fas fa-university text-orange"></i>
+                                                        <strong class="margin-10px-left text-orange ml-3">Department</strong>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-baseline">
+                                                        <span>:</span>
+                                                        <p class="ml-5">{{ empData.department ? empData.department : '-' }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

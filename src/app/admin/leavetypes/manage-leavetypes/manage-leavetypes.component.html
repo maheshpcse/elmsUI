@@ -1,1 +1,97 @@
-<p>manage-leavetypes works!</p>
+<div class="wrapper">
+    
+    <!-- Admin Sidebar  -->
+    <app-admin-sidemenu></app-admin-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <!-- Admin Header  -->
+        <app-admin-header></app-admin-header>
+
+        <div class="container-fluid demo">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-10">
+                                    <h4 class="title-dept">Leave Types <span>List</span></h4>
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <a [routerLink]="['/add-leavetype']" class="btn add-new"><i class="fas fa-plus-circle"></i>
+                                        Add New
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table class="table table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="7%">S No.</th>
+                                        <th>Name</th>
+                                        <th>Short Name</th>
+                                        <th>Short Code</th>
+                                        <th>Created On</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of leaveTypesList; let i=index;">
+                                        <td width="7%">{{ i+1 }}</td>
+                                        <td>{{ item?.name | titlecase }}</td>
+                                        <td>{{ item?.shortName }}</td>
+                                        <td>{{ item?.shortCode }}</td>
+                                        <td>{{ item?.created_at | date: 'MMMM dd, yyyy' }}</td>
+                                        <td>
+                                            <span class="status-active" *ngIf="item?.status === 1">Active</span>
+                                            <span class="status-inactive" *ngIf="item?.status === 0">Inactive</span>
+                                        </td>
+                                        <td>
+                                            <ul class="action-list">
+                                                <li>
+                                                    <a href="#" class="btn btn-primary edit-btn">
+                                                        <i class="fas fa-pencil-square"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="ml-2">
+                                                    <a href="#" class="btn btn-danger delete-btn">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="td-action-view">
+                                            <a [routerLink]="['/leavetypes-view', item?.leaveTypeId]" class="more">View Details</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-6">Showing <b>5</b> out of <b>25</b> entries</div>
+                                <div class="col-md-6 text-right">
+                                    <ul class="pagination hidden-xs justify-content-end">
+                                        <li><a href="#"><</a></li>
+                                        <li><a href="#">Prev</a></li>
+                                        <li class="active ml-5"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li class="ml-5"><a href="#">Next</a></li>
+                                        <li><a href="#">></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,16 +13,33 @@
                     <h3 class="title">Employee Login</h3>
                     <hr class="divisor">
                     <div class="form-group">
-                        <label for="empid">Employee Id</label>
-                        <input type="text" class="form-control" name="empname" id="empid" placeholder="Type employee id">
+                        <label for="empid" class="field-required">Employee ID</label>
+                        <input type="text" class="form-control" name="empname" id="empid" placeholder="Type Employee ID"
+                            [ngClass]="{'is-focus': empid.invalid && (empid.dirty || empid.touched)}"
+                            [(ngModel)]="employeeId" #empid="ngModel" autocomplete="off" required>
+                        <span *ngIf="empid.invalid && (empid.dirty || empid.touched)">
+                            <span class="is-error" *ngIf="empid?.errors?.required">Employee ID is required.</span>
+                        </span>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="pwdname" id="pwdid" placeholder="Type password">
+                        <label for="password" class="field-required">Password</label>
+                        <input type="password" class="form-control" name="pwdname" id="pwdid"
+                            [ngClass]="{'is-focus': pwdname.invalid && (pwdname.dirty || pwdname.touched)}"
+                            placeholder="Type Password" [(ngModel)]="password" #pwdname="ngModel" autocomplete="off"
+                            required>
+                        <span *ngIf="pwdname.invalid && (pwdname.dirty || pwdname.touched)">
+                            <span class="is-error" *ngIf="pwdname?.errors?.required">Password is required.</span>
+                        </span>
                     </div>
-                    <button type="submit" class="btn btn-primary topBtn">
-                        <i class="fa fa-sign-in"></i> Log In
-                    </button>
+                    <div>
+                        <button type="submit" class="btn btn-primary topBtn" [disabled]="spinner || setFormDisable()"
+                            (click)="userLogin()">
+                            <span *ngIf="!spinner"><i class="fas fa-sign-in-alt"></i></span>
+                            <span *ngIf="spinner"><i class="fas fa-spinner fa-spin"></i></span>
+                            <span class="ml-2" *ngIf="!spinner">Log In</span>
+                            <span class="ml-2" *ngIf="spinner">Validating...</span>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,0 +1,226 @@
+<div class="wrapper">
+    
+    <!-- Admin Sidebar  -->
+    <app-admin-sidemenu></app-admin-sidemenu>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <!-- Admin Header  -->
+        <app-admin-header></app-admin-header>
+
+        <div class="form-bg">
+            <div class="container-fluid bg-white">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between align-items-baseline">
+                        <h6 class="title mt-3">Employee Leave Request Details</h6>
+                        <button class="btn btn-action-back" type="submit" [routerLink]="['/admin-profile']">
+                            <i class="fas fa-arrow-circle-left"></i>
+                            <span class="ml-2">Back</span>
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="emp-img">
+                            <img src="../../../assets/images/emp-pic.png" alt="_emppic" class="rounded-circle"
+                                width="200" height="200">
+                        </div>
+                        <!-- <h6>Pachapalam Mahesh</h6>
+                        <div class="d-flex justify-content-start align-items-baseline mt-3">
+                            <span>
+                                <i class="fas fa-id-card"></i>
+                            </span>
+                            <span class="ml-2">
+                                <p>Employee ID</p>
+                                <em>EMP001</em>
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-baseline mt-3">
+                            <span>
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="ml-2">
+                                <p>Email Address</p>
+                                <span>maheshmahi1599@gmail.com</span>
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-baseline mt-3">
+                            <span>
+                                <i class="fas fa-graduation-cap"></i>
+                            </span>
+                            <span class="ml-2">
+                                <p>Designation</p>
+                                <span>Mean stack developer</span>
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-baseline mt-3">
+                            <span>
+                                <i class="fas fa-university"></i>
+                            </span>
+                            <span class="ml-2">
+                                <p>Department</p>
+                                <span>IT/Software</span>
+                            </span>
+                        </div> -->
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-6">
+                                <table class="table table-borderless table-light table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="row">Full Name</th>
+                                            <th>:</th>
+                                            <td>Pachapalam Mahesh</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Employee ID</th>
+                                            <th>:</th>
+                                            <td>
+                                                <em>EMP001</em>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email Address</th>
+                                            <th>:</th>
+                                            <td>maheshmahi1599@gmail.com</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <table class="table table-borderless table-light table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="row">Designation</th>
+                                            <th>:</th>
+                                            <td>Mean Stack Developer</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Department</th>
+                                            <th>:</th>
+                                            <td>IT/Software</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12 leave-table">
+                                <table class="table table-borderless table-light table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="row">Leave Type</th>
+                                            <th>:</th>
+                                            <td>{{ leaveType | dataTransfer }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Leave Duration</th>
+                                            <th>:</th>
+                                            <td>
+                                                <span>February 12, 2022 - February 14, 2022</span>
+                                                <span class="ml-5">3 Day(s)</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Reason To Leave</th>
+                                            <th>:</th>
+                                            <td>
+                                                Vacation to Araku.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Leave Applied Date</th>
+                                            <th>:</th>
+                                            <td>
+                                                <span>February 10, 2022</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Action</th>
+                                            <th>:</th>
+                                            <td>
+                                                <div>
+                                                    <button class="btn btn-action-approve" type="submit"
+                                                        data-toggle="modal" data-target="#approveModal">
+                                                        <i class="fas fa-check"></i>
+                                                        <span class="ml-2">Approve</span>
+                                                    </button>
+                                                    <button class="btn btn-action-reject ml-2" type="reset"
+                                                        data-toggle="modal" data-target="#rejectModal">
+                                                        <i class="fas fa-times"></i>
+                                                        <span class="ml-2">Reject</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Apporve Modal -->
+<div class="modal fade" id="approveModal" ata-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="approveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h5 class="modal-title" id="approveModalLabel">Approve confirmation?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="info">
+                    <h4 class="w-100">Are you sure?</h4>
+                    <p>Do you really want to approve leave request?</p>
+                    <span>Note: <em>This process cannot be undone.</em></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="remarks" class="field-required">Remarks</label>
+                    <textarea class="form-control" name="" id="" cols="3" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-action-yes">Yes</button>
+                <button type="button" class="btn btn-action-no" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reject Modal -->
+<div class="modal fade" id="rejectModal" ata-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="rejectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="rejectModalLabel">Reject confirmation?</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="info">
+                    <h4 class="w-100">Are you sure?</h4>
+                    <p>Do you really want to reject leave request?</p>
+                    <span>Note: <em>This process cannot be undone.</em></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="remarks" class="field-required">Remarks</label>
+                    <textarea class="form-control" name="" id="" cols="3" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-action-yes">Yes</button>
+                <button type="button" class="btn btn-action-no" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>

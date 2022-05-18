@@ -2,6 +2,7 @@
     HOME PAGE STYLE
 ----------------------------------------------------- */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -35,6 +36,7 @@ p {
   transition: all 0.3s;
   height: 100%;
   margin-left: 250px;
+  margin-top: 100px;
 }
 
 /* add employee css styles */
@@ -44,6 +46,7 @@ p {
   padding: 25px 30px 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 .form-container .title {
   color: #333;
   font-size: 24px;
@@ -53,19 +56,22 @@ p {
   letter-spacing: 0.5px;
   margin: 0 0 25px;
 }
+
 .form-container .title:after {
   content: "";
-  background-color: #7386d5;
+  background-color: seagreen;
   height: 2px;
   width: 150px;
   margin: 5px auto 0;
   clear: both;
   display: block;
 }
+
 .form-container .form-horizontal {
   margin: 0 0 20px;
   /* font-size: 0; */
 }
+
 .form-container .form-horizontal .sub-title {
   font-size: 15px;
   font-weight: 600;
@@ -75,31 +81,38 @@ p {
   padding: 17px 0 0;
   /* border-top: 1px solid #d1d1d1; */
 }
+
 .form-horizontal .form-group {
   width: calc(50% - 10px);
-  margin: 0 10px 15px 0;
+  /* margin: 0 10px 15px 0; */
   display: inline-block;
 }
+
 .form-horizontal .form-group:nth-child(even) {
-  margin: 0 0 10px 10px;
+  /* margin: 0 0 10px 10px; */
 }
+
 .form-horizontal .form-group:nth-child(3),
 .form-horizontal .form-group:nth-child(4) {
   margin-bottom: 25px;
 }
+
 .form-horizontal .form-group.phone-no {
   margin: 0 10px 20px 0;
 }
+
 .form-horizontal .form-group.age {
   margin: 0 0 20px 10px;
 }
+
 .form-horizontal .form-group label {
-  color: #999;
+  color: seagreen !important;
   font-size: 13px;
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 600;
+  font-style: bold;
   margin: 0 0 3px;
 }
+
 .form-horizontal .form-control {
   color: #555;
   background-color: transparent;
@@ -107,19 +120,21 @@ p {
   letter-spacing: 1px;
   height: 33px;
   padding: 5px;
-  box-shadow: none;
+  /* box-shadow: none; */
   border: 1px solid #d1d1d1;
   border-radius: 0;
   display: inline-block;
   transition: all 0.3s;
 }
+
 .form-horizontal .form-control:focus {
   box-shadow: none;
-  border: 1px solid #7386d5;
+  border: 1px solid mediumseagreen;
 }
+
 .form-horizontal .btn {
   color: #fff;
-  background: #7386d5;
+  background: mediumseagreen;
   font-size: 17px;
   font-weight: 600;
   text-transform: uppercase;
@@ -130,13 +145,15 @@ p {
   display: block;
   transition: all 0.3s ease;
 }
+
 .form-horizontal .btn:hover,
 .form-horizontal .btn:focus {
   color: #fff;
-  background-color: #7386d5;
+  background-color: seagreen;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.3) inset;
   outline: none;
 }
+
 .form-horizontal .user-login {
   color: #333;
   font-size: 16px;
@@ -144,23 +161,28 @@ p {
   text-align: center;
   display: block;
 }
+
 .form-horizontal .user-login a {
-  color: #7386d5;
+  color: limegreen;
   transition: all 0.3s ease 0s;
 }
+
 .form-horizontal .user-login a:hover {
   color: #555;
 }
+
 .form-container .social-links {
   font-size: 14px;
   text-align: center;
 }
+
 .form-container .social-links span {
   font-style: italic;
   margin: 0 0 20px;
   display: block;
   position: relative;
 }
+
 .form-container .social-links span:before,
 .form-container .social-links span:after {
   content: "";
@@ -171,13 +193,15 @@ p {
   top: 50%;
   left: 0;
 }
+
 .form-container .social-links span:after {
   left: auto;
   right: 0;
 }
+
 .form-container .social-links a {
   color: #fff;
-  background-color: #20599f;
+  background-color: seagreen;
   display: inline-block;
   font-size: 15px;
   font-weight: 600;
@@ -188,18 +212,23 @@ p {
   margin: 0 5px;
   transition: all 0.3s ease 0s;
 }
+
 .form-container .social-links a i {
   font-size: 13px;
   margin-right: 3px;
 }
+
 .form-container .social-links a:nth-child(2) {
-  background-color: #00adf2;
+  background-color: seagreen;
 }
+
 .form-container .social-links a:hover {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
+
 @media only screen and (max-width: 576px) {
+
   .form-container .form-group,
   .form-container .form-group:nth-child(even),
   .form-container .form-group.phone-no,
@@ -208,13 +237,144 @@ p {
     margin: 0 0 25px;
   }
 }
+
 @media only screen and (max-width: 479px) {
   .form-container .social-links a {
     width: 80%;
     margin: 0 auto;
     display: block;
   }
+
   .form-container .social-links a:nth-child(even) {
     margin: 0 auto 10px;
+  }
+}
+
+input {
+  height: 45px !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+}
+
+select {
+  height: 45px !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+}
+
+::placeholder {
+  color: #ccc;
+}
+
+input:invalid {
+  border: 1px solid crimson;
+  animation: shake 300ms;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(4px);
+  }
+
+  50% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+.is-error:focus {
+  border: 1px solid crimson;
+}
+
+.is-error-note {
+  color: crimson;
+  font-size: 0.85em;
+}
+
+/* add employee modal css styles */
+.modal .modal-header {
+  color: white;
+  background-color: seagreen;
+  border-color: seagreen;
+  border-bottom: none;
+}
+
+.modal .modal-header button {
+  color: white;
+}
+
+.modal .modal-body p {
+  font-size: 1em;
+}
+
+.modal .modal-body span {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.modal .btn-secondary {
+  cursor: pointer;
+  color: white;
+  background-color: #d1d1d1 !important;
+  border: none;
+}
+
+.modal .btn-primary {
+  cursor: pointer;
+  color: white;
+  background-color: mediumseagreen !important;
+  border: none;
+}
+
+.modal .btn-primary:hover {
+  background-color: seagreen !important;
+}
+
+.modal .modal-body .fa-circle-notch {
+  color: mediumseagreen;
+  font-size: 3em;
+  text-align: center !important;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid mediumseagreen;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: mediumseagreen transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

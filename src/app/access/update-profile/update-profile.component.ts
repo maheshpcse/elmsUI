@@ -12,7 +12,7 @@ export class UpdateProfileComponent implements OnInit {
   middleName: any = null;
   lastName: any = null;
   userName: any = null;
-  emailId: any = null;
+  email: any = null;
   address: any = null;
   cityName: any = null;
   stateName: any = null;
@@ -22,7 +22,7 @@ export class UpdateProfileComponent implements OnInit {
   dateOfBirth: any = null;
   designation: any = null;
   department: any = null;
-  registrationDate: any = null;
+  dateOfJoining: any = null;
 
   constructor() { }
 
@@ -32,7 +32,7 @@ export class UpdateProfileComponent implements OnInit {
     this.middleName = 'Mahesh';
     this.lastName = '';
     this.userName = 'Mahesh Pm';
-    this.emailId = 'maheshpm1599@gmail.com';
+    this.email = 'maheshpm1599@gmail.com';
     this.address = 'Ram nagar, GVMC';
     this.cityName = 'Visakapatnam';
     this.stateName = 'Andhra Pradesh';
@@ -42,7 +42,7 @@ export class UpdateProfileComponent implements OnInit {
     this.dateOfBirth = '1997-08-04';
     this.designation = 'Software Developer';
     this.department = 'IT/Software';
-    this.registrationDate = '2019-08-01';
+    this.dateOfJoining = '2019-08-01';
   }
 
 }
