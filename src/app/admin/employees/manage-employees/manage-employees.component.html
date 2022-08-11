@@ -228,9 +228,7 @@
                     <label for="department">Department</label>
                     <select class="form-control" name="deptName" id="deptId" [(ngModel)]="filterDepartment">
                         <option value="all" selected disabled>All Departments</option>
-                        <option value="hr">HR Department</option>
-                        <option value="it/software">IT/Software</option>
-                        <option value="it/hardware">IT/Hardware</option>
+                        <option [value]="item?.departmentShortCode" *ngFor="let item of departmentsList;">{{ item?.departmentName }}</option>
                     </select>
                 </div>
             </div>

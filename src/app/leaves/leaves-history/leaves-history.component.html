@@ -12,71 +12,294 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-10">
+                            <div class="row d-flex align-items-baseline">
+                                <div class="col-md-4">
                                     <h4 class="title">Leave History <small>(All Leaves Data)</small></h4>
                                 </div>
-                                <div class="col-md-2 text-right create-btn">
-                                    <a href="#" class="btn btn-sm btn-primary">Create New</a>
+                                <!-- <div class="col-md-2 text-right create-btn">
+                                    <a [routerLink]="['/apply-leave']" class="btn btn-sm btn-primary">Create New</a>
+                                </div> -->
+                                <div class="col-md-8 text-right d-flex justify-content-end align-items-baseline">
+                                    <a [routerLink]="['/apply-leave']" class="btn add-new">
+                                        <i class="fas fa-plus-circle"></i>
+                                        Create New
+                                    </a>
+                                    <div class="form-group input-group d-flex align-items-baseline ml-2"
+                                        style="width: 50%;">
+                                        <input type="text" class="form-control" name="searchName" id="searchId"
+                                            placeholder="Search" [(ngModel)]="filterQuery"
+                                            (keyup.enter)="onSearchLeave()" (keypress.enter)="onSearchLeave()">
+                                        <button class="btn btn-action-search" (click)="onSearchLeave()">
+                                            <span *ngIf="!filterQuery"><i class="fas fa-search"></i></span>
+                                            <span *ngIf="filterQuery"><i class="fas fa-check"></i></span>
+                                        </button>
+                                        <button class="btn btn-action-clear ml-2" (click)="resetSearchFilters()">
+                                            <span><i class="fas fa-times"></i></span>
+                                        </button>
+                                        <button class="btn btn-action-filters ml-2" (click)="openFilters()">
+                                            <span><i class="fas fa-filter"></i></span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body table-responsive mt-2">
-                            <table class="table table-hover table-responsive">
+                            <table class="table table-hover table-responsive table-striped">
                                 <thead>
                                     <tr class="active">
                                         <th>S No.</th>
                                         <th>Leave Type</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
-                                        <th>Reason</th>
+                                        <!-- <th>Reason</th> -->
                                         <th>Applied Date</th>
-                                        <th>Remarks</th>
+                                        <!-- <th>Remarks</th> -->
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of empLeavesData; let i=index;">
+                                    <tr *ngFor="let item of empLeavesList; let i=index;">
                                         <td>{{ i+1 }}</td>
                                         <td>{{ item?.leaveTypeName }}</td>
                                         <td>{{ item?.leaveStartDate | date: 'MMMM dd, yyyy' }}</td>
                                         <td>{{ item?.leaveEndDate | date: 'MMMM dd, yyyy' }}</td>
-                                        <td>{{ item?.leaveReason }}</td>
+                                        <!-- <td>{{ item.reason ? item.reason : 'N/A' }}</td> -->
                                         <td>{{ item?.leaveAppliedDate | date: 'MMMM dd, yyyy' }}</td>
-                                        <td>{{ item?.remarks }}</td>
+                                        <!-- <td>{{ item.remarks ? item.remarks : 'N/A' }}</td> -->
                                         <td>
                                             <span class="badge badge-warning" *ngIf="item?.status === 2">Pending</span>
                                             <span class="badge badge-success" *ngIf="item?.status === 1">Approved</span>
                                             <span class="badge badge-danger" *ngIf="item?.status === 0">Rejected</span>
+                                            <span class="badge badge-secondary"
+                                                *ngIf="item?.status === 3">Cancelled</span>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-primary"><em class="fas fa-edit"></em></a>
-                                            <a href="#" class="btn btn-danger ml-2"><em class="fas fa-trash"></em></a>
+                                            <a class="btn btn-primary" *ngIf="item?.status === 2"
+                                                (click)="onSelectLeave(item);updateLeave(item)">
+                                                <em class="fas fa-edit"></em>
+                                            </a>
+                                            <a class="no-action" *ngIf="item?.status !== 2">
+                                                <em>No Action</em>
+                                            </a>
+                                            <a class="btn btn-danger ml-2" *ngIf="item?.status === 2"
+                                                data-toggle="modal" data-target="#cancelReqModal"
+                                                (click)="onSelectLeave(item)">
+                                                <em class="fas fa-trash"></em>
+                                            </a>
                                         </td>
+                                        <td>
+                                            <a class="view-data" (click)="onSelectLeave(item);openViewDetails()">
+                                                <strong>View Details</strong>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr scope="row" style="background: white !important;"
+                                        *ngIf="empLeavesList?.length == 0">
+                                        <td></td>
+                                        <td>
+                                            <div class="no-data" style="width: 50px;">
+                                                <div class="no-data-img">
+                                                    <img src="../../../../assets/images/no-data-found.png"
+                                                        alt="_noDataImg" class="rounded-circle img-responsive">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="panel-footer">
+                        <div class="panel-footer" *ngIf="count > 0">
                             <div class="row d-flex align-items-center">
-                                <div class="col-md-8">Page 1 of 5</div>
+                                <div class="col-md-8">
+                                    Page {{ page }} of {{ count }}</div>
                                 <div class="col-md-4 text-right">
                                     <ul class="pagination hidden-xs pull-right">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                    </ul>
-                                    <ul class="pagination visible-xs pull-right">
-                                        <li><a href="#"><</a></li>
-                                        <li><a href="#">></a></li>
+                                        <li [ngClass]="{'disabled': page == 1}" (click)="setPage(1)"
+                                            data-toggle="tooltip" data-placement="top" title="First Page">
+                                            <a><<</a>
+                                        </li>
+                                        <li [ngClass]="{'disabled': page == 1}" (click)="setPage(page - 1)">
+                                            <a><</a>
+                                        </li>
+                                        <li *ngFor="let item of pager; let i =index;" [ngClass]="setClass(item)"
+                                            (click)="setPage(item)">
+                                            <a>{{item}}</a>
+                                        </li>
+                                        <li class="ml-5" [ngClass]="{'disabled': page == pager.length}"
+                                            (click)="setPage(page + 1)">
+                                            <a>></a>
+                                        </li>
+                                        <li [ngClass]="{'disabled': page == pager.length}"
+                                            (click)="setPage(pager.length)" data-toggle="tooltip" data-html="true"
+                                            data-placement="top" title="Last Page">
+                                            <a>>></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Details -->
+<div id="mySidenav-view" class="sidenav-view">
+    <div class="d-flex justify-content-between align-items-center">
+        <a class="closebtn-view" (click)="closeViewDetails()">&times;</a>
+        <h5>View Details</h5>
+    </div>
+    <hr style="margin-top: 1.25rem !important;">
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-12 data">
+                <span>
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Leave Type</p>
+                    <span>{{ editLeaveItem?.leaveTypeName }}</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr class="divider">
+            </div>
+            <div class="col-md-6 data mt-2">
+                <span>
+                    <i class="fas fa-calendar"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Leave Start Date</p>
+                    <span>{{ editLeaveItem?.leaveStartDate | date: 'MMMM dd, yyyy' }}</span>
+                </div>
+            </div>
+            <div class="col-md-6 data mt-2">
+                <span>
+                    <i class="fas fa-calendar"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Leave End Date</p>
+                    <span>{{ editLeaveItem?.leaveEndDate | date: 'MMMM dd, yyyy' }}</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 data mt-3">
+                <span>
+                    <i class="fas fa-calendar-check"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Leave Applied Date</p>
+                    <span>{{ editLeaveItem?.leaveAppliedDate | date: 'MMMM dd, yyyy' }}</span>
+                </div>
+            </div>
+            <div class="col-md-6 data mt-3">
+                <span>
+                    <i class="fas fa-calendar-check"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Effective Month</p>
+                    <span>{{ editLeaveItem?.effectiveMonth | date: 'MMMM yyyy' }}</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr class="divider">
+            </div>
+            <div class="col-md-12 data mt-2">
+                <span>
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Reason</p>
+                    <span>{{ editLeaveItem.reason ? editLeaveItem.reason : 'N/A' }}</span>
+                </div>
+            </div>
+            <div class="col-md-12 data mt-3">
+                <span>
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Status</p>
+                    <span *ngIf="editLeaveItem?.status == 0">Rejected</span>
+                    <span *ngIf="editLeaveItem?.status == 1">Approved</span>
+                    <span *ngIf="editLeaveItem?.status == 2">Pending</span>
+                    <span *ngIf="editLeaveItem?.status == 3">Cancelled</span>
+                </div>
+            </div>
+            <div class="col-md-12 data mt-3">
+                <span>
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <div class="ml-3">
+                    <p>Remarks</p>
+                    <span>{{ editLeaveItem.remarks ? editLeaveItem.remarks : 'N/A' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filters -->
+<div id="mySidenav" class="sidenav">
+    <div class="d-flex justify-content-between align-items-center">
+        <h5>Filters</h5>
+        <a class="closebtn" (click)="closeFilters()">&times;</a>
+    </div>
+    <hr style="margin-top: 1.25rem !important;">
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" name="statusName" id="statusId" [(ngModel)]="filterStatus">
+                        <option value="all" selected disabled>All Status</option>
+                        <option value="2">Pending</option>
+                        <option value="1">Approved</option>
+                        <option value="0">Rejected</option>
+                        <option value="3">Cancelled</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="department">Leavetype</label>
+                    <select class="form-control" name="leaveName" id="leaveId" [(ngModel)]="filterLeavetype">
+                        <option value="all" selected disabled>All Leavetypes</option>
+                        <option [value]="item?.leaveShortCode" *ngFor="let item of leavetypesList;">{{
+                            item?.leaveTypeName }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="form-group input-group d-flex justify-content-center align-items-baseline">
+                    <button class="btn btn-action-reset col-4" type="reset" (click)="resetFilter()">Reset</button>
+                    <button class="btn btn-action-apply col-4 ml-2" type="submit" (click)="applyFilter()">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel leave request modal -->
+<div class="modal-box">
+    <div class="modal fade" id="cancelReqModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <div class="modal-body">
+                    <div class="icon"><i class="fa fa-trash-alt"></i></div>
+                    <h3 class="title">Are you sure, you want to cancel leave request?</h3>
+                    <p class="description">
+                        This change will reflect in your portal after sometime.
+                    </p>
+                    <button class="subscribe" (click)="cancelLeaveRequestToEmployee()">Delete</button>
                 </div>
             </div>
         </div>

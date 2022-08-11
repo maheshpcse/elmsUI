@@ -69,6 +69,9 @@ import { EduComponent } from './edu/edu.component';
 import { DepartmentApisService } from './api-services/department-apis.service';
 import { LeavetypeApisService } from './api-services/leavetype-apis.service';
 import { LeavemanagementApisService } from './api-services/leavemanagement-apis.service';
+import { AdminDashboardApisService } from './api-services/admin-dashboard-apis.service';
+import { AdminSettingsApisService } from './api-services/admin-settings-apis.service';
+import { EmployeeSettingsService } from './api-services/employee-settings.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -144,6 +147,9 @@ import { LeavemanagementApisService } from './api-services/leavemanagement-apis.
         DepartmentApisService,
         LeavetypeApisService,
         LeavemanagementApisService,
+        AdminDashboardApisService,
+        AdminSettingsApisService,
+        EmployeeSettingsService,
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
     ],
     bootstrap: [AppComponent],

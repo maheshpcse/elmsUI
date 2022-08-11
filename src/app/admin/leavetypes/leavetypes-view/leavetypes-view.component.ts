@@ -1,5 +1,9 @@
+import { AuthAdminService } from './../../../api-services/auth-admin.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LeavetypeApisService } from 'src/app/api-services/leavetype-apis.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-leavetypes-view',
@@ -8,43 +12,52 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LeavetypesViewComponent implements OnInit {
 
-    public pageId: any = null;
-    empData: any = {
-        userId: 1,
-        employeeId: 'EMP001',
-        employeeName: 'employeeOne',
-        profileImage: null,
-        email: 'maheshpm1599@gmail.com',
-        mobile: '8886197968',
-        status: 1,
-        leaveTypeId: 1,
-        leaveTypeName: 'Casual Leave',
-        leaveStartDate: '2021-02-03',
-        leaveEndDate: '2021-02-05',
-        leaveAppliedDate: '2021-01-10',
-        leaveReason: 'Vacation to Araku',
-        remarks: 'permission granted',
-        leaveStatus: 2,
-        approvedDate: '2021-02-02',
-        adminStatus: 2
+    spinner: any = false;
+    leaveData: any = {
+        // deptId: 1,
+        // leaveTypeName: 'Test Leavetype',
+        // leaveShortName: 'Test Leavetype Short Name',
+        // leaveShortCode: 'Test Leavetype Short Code',
+        // description: 'Test leave data',
+        // status: 1
     };
-
+    pageId: any = null;
     transformData: any = null;
 
     constructor(
         public router: Router,
-        public route: ActivatedRoute
+        public route: ActivatedRoute,
+        public authAdminService: AuthAdminService,
+        public leavetypeApiService: LeavetypeApisService,
+        public toastr: ToastrManager
     ) { }
 
     ngOnInit() {
-        this.route.queryParams.subscribe((id?: any) => {
-            console.log('Get page id isss', id);
-            this.pageId = Number(id);
+        this.route.params.subscribe((item?: any) => {
+            console.log('Get param item isss', item);
+            this.pageId = item && Object.keys(item).length > 0 ? Number(item['lt_Id']) : null;
         });
+        this.getLeavetypeData();
     }
 
     goBackTo() {
         this.router.navigate(['/manage-leavetype']);
+    }
+
+    getLeavetypeData() {
+        this.spinner = true;
+        this.leavetypeApiService.geLeavetypeDataById(Number(this.pageId)).subscribe(async (response: any) => {
+            console.log('Get leave type data response isss', response);
+            if (response && response.success) {
+                this.leaveData = response.data || {};
+            } else {
+                this.toastr.errorToastr(response.message);
+            }
+            this.spinner = false;
+        }, (error: any) => {
+            this.toastr.errorToastr('Network failed, Please try again.');
+            this.spinner = false;
+        });
     }
 
 }

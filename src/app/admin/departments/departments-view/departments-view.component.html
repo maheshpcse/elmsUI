@@ -15,7 +15,7 @@
                     <div class="col-md-12">
                         <div class="team-single-text padding-50px-left sm-no-padding-left mt-3">
                             <div class="d-flex justify-content-between align-items-baseline">
-                                <h4 class="font-size38 sm-font-size32 xs-font-size30">EMPLOYEE DETAILS</h4>
+                                <h4 class="font-size38 sm-font-size32 xs-font-size30">DEPARTMENT DETAILS</h4>
                                 <button class="btn btn-action-back" type="submit" (click)="goBackTo()">
                                     <span><i class="fas fa-chevron-left"></i></span>
                                     <span class="ml-2">Back</span>
@@ -30,11 +30,11 @@
                                                 <div class="row d-flex">
                                                     <div class="col-md-4 d-flex align-items-baseline">
                                                         <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Employee Name</strong>
+                                                        <strong class="margin-10px-left text-orange ml-3">Department Name</strong>
                                                     </div>
                                                     <div class="col-md-8 d-flex align-items-baseline">
                                                         <span>:</span>
-                                                        <p class="ml-5">{{ empData?.employeeName | titlecase }}</p>
+                                                        <p class="ml-5">{{ deptData?.departmentName | titlecase }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -42,39 +42,11 @@
                                                 <div class="row d-flex">
                                                     <div class="col-md-4 d-flex align-items-baseline">
                                                         <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Employee ID</strong>
+                                                        <strong class="margin-10px-left text-orange ml-3">Department Short Name</strong>
                                                     </div>
                                                     <div class="col-md-8 d-flex align-items-baseline">
                                                         <span>:</span>
-                                                        <p class="ml-5">{{ empData?.employeeId }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-4 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Employee ID</strong>
-                                                    </div>
-                                                    <div class="col-md-8 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5">{{ empData?.employeeId }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-4 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Email ID</strong>
-                                                    </div>
-                                                    <div class="col-md-8 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5">{{ empData?.email }}</p>
+                                                        <p class="ml-5">{{ deptData?.departmentShortName }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,11 +58,11 @@
                                                 <div class="row d-flex">
                                                     <div class="col-md-4 d-flex align-items-baseline">
                                                         <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Phone Number</strong>
+                                                        <strong class="margin-10px-left text-orange ml-3">Department Short Code</strong>
                                                     </div>
                                                     <div class="col-md-8 d-flex align-items-baseline">
                                                         <span>:</span>
-                                                        <p class="ml-5">+91 {{ empData?.mobile }}</p>
+                                                        <p class="ml-5">+91 {{ deptData?.departmentShortCode }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,175 +74,13 @@
                                                     </div>
                                                     <div class="col-md-8 d-flex align-items-baseline emp-status">
                                                         <span>:</span>
-                                                        <!-- <p class="badge badge-success ml-5" *ngIf="empData?.status === 1">Active</p>
-                                                        <p class="badge badge-danger ml-5" *ngIf="empData?.status === 0">Inactive</p> -->
-                                                        <span class="badge badge-pill badge-success ml-5" *ngIf="empData?.status === 1">
+                                                        <!-- <p class="badge badge-success ml-5" *ngIf="deptData?.status === 1">Active</p>
+                                                        <p class="badge badge-danger ml-5" *ngIf="deptData?.status === 0">Inactive</p> -->
+                                                        <span class="badge badge-pill badge-success ml-5" *ngIf="deptData?.status === 1">
                                                             Active
                                                         </span>
-                                                        <span class="badge badge-pill badge-danger ml-5" *ngIf="empData?.status === 0">
+                                                        <span class="badge badge-pill badge-danger ml-5" *ngIf="deptData?.status === 0">
                                                             InActive
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <h4 class="font-size38 sm-font-size32 xs-font-size30 mt-5">LEAVE DETAILS</h4>
-
-                            <div class="contact-info-section margin-40px-tb mt-5">
-                                <ul class="list-style9 no-margin">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-4 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Leave Type</strong>
-                                                    </div>
-                                                    <div class="col-md-8 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5">{{ empData?.leaveTypeName | titlecase }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-4 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Duration</strong>
-                                                    </div>
-                                                    <div class="col-md-8 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5 d-flex justify-content-between">
-                                                            <span>{{ empData?.leaveStartDate | date: 'MMMM dd, yyyy' }}</span>
-                                                            <span class="ml-2">-</span>
-                                                            <span class="ml-2">{{ empData?.leaveEndDate | date: 'MMMM dd, yyyy' }}</span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-4 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Applied Date</strong>
-                                                    </div>
-                                                    <div class="col-md-8 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5">{{ empData?.leaveAppliedDate | date: 'MMMM dd, yyyy' }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-2 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Reason To Leave</strong>
-                                                    </div>
-                                                    <div class="col-md-10 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5">{{ empData?.leaveReason }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-2 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Leave Status</strong>
-                                                    </div>
-                                                    <div class="col-md-10 d-flex align-items-baseline emp-status">
-                                                        <span>:</span>
-                                                        <!-- <p class="badge badge-success ml-5" *ngIf="empData?.leaveStatus === 1">Approved</p>
-                                                        <p class="badge badge-warning ml-5" *ngIf="empData?.leaveStatus === 2">Pending</p>
-                                                        <p class="badge badge-danger ml-5" *ngIf="empData?.leaveStatus === 0">Rejected</p>
-                                                        <p class="badge badge-danger ml-5" *ngIf="empData?.leaveStatus === 3">Cancelled</p> -->
-                                                        <span class="badge badge-pill badge-success ml-5" *ngIf="empData?.leaveStatus === 1">
-                                                            Approved
-                                                        </span>
-                                                        <span class="badge badge-pill badge-warning ml-5" *ngIf="empData?.leaveStatus === 2">
-                                                            Pending
-                                                        </span>
-                                                        <span class="badge badge-pill badge-danger ml-5" *ngIf="empData?.leaveStatus === 0">
-                                                            Rejected
-                                                        </span>
-                                                        <span class="badge badge-pill badge-rose ml-5" *ngIf="empData?.leaveStatus === 3">
-                                                            Cancelled
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-2 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Remarks</strong>
-                                                    </div>
-                                                    <div class="col-md-10 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5">{{ empData?.remarks }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-4 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Approved Date</strong>
-                                                    </div>
-                                                    <div class="col-md-8 d-flex align-items-baseline">
-                                                        <span>:</span>
-                                                        <p class="ml-5">{{ empData?.approvedDate | date: 'MMMM dd, yyyy' }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="row d-flex">
-                                                    <div class="col-md-4 d-flex align-items-baseline">
-                                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                                        <strong class="margin-10px-left text-orange ml-3">Admin Status</strong>
-                                                    </div>
-                                                    <div class="col-md-8 d-flex align-items-baseline emp-status">
-                                                        <span>:</span>
-                                                        <!-- <p class="badge badge-success ml-5" *ngIf="empData?.adminStatus === 1">Approved</p>
-                                                        <p class="badge badge-warning ml-5" *ngIf="empData?.adminStatus === 2">Pending</p>
-                                                        <p class="badge badge-danger ml-5" *ngIf="empData?.adminStatus === 0">Rejected</p> -->
-                                                        <span class="badge badge-pill badge-success ml-5" *ngIf="empData?.adminStatus === 1">
-                                                            Approved
-                                                        </span>
-                                                        <span class="badge badge-pill badge-warning ml-5" *ngIf="empData?.adminStatus === 2">
-                                                            Pending
-                                                        </span>
-                                                        <span class="badge badge-pill badge-danger ml-5" *ngIf="empData?.adminStatus === 0">
-                                                            Rejected
                                                         </span>
                                                     </div>
                                                 </div>

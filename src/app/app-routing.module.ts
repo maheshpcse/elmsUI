@@ -159,7 +159,7 @@ const routes: Routes = [
         component: ManageLeavetypesComponent
     },
     {
-        path: 'leavetypes-view/:leaveTypeId',
+        path: 'leavetypes-view/:lt_Id',
         canActivate: [AuthGuardService],
         component: LeavetypesViewComponent
     },

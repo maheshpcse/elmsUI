@@ -18,11 +18,6 @@
                                 <div class="col-md-4">
                                     <h4 class="title-dept">Departments <span>List</span></h4>
                                 </div>
-                                <!-- <div class="col-md-2 text-right">
-                                    <a [routerLink]="['/add-department']" class="btn add-new"><i class="fas fa-plus-circle"></i>
-                                        Add New
-                                    </a>
-                                </div> -->
                                 <div class="col-md-8 text-right d-flex justify-content-end align-items-baseline">
                                     <a [routerLink]="['/add-department']" class="btn add-new"><i
                                             class="fas fa-plus-circle"></i>
@@ -76,7 +71,7 @@
                                         </td>
                                         <td>
                                             <ul class="action-list d-flex">
-                                                <li *ngIf="item?.status == 1" (click)="onSelectDepartment(item);updateEmployee(item)">
+                                                <li *ngIf="item?.status == 1" (click)="onSelectDepartment(item);updateDepartment(item)">
                                                     <a class="btn btn-primary edit-btn">
                                                         <i class="fas fa-pencil-square"></i>
                                                     </a>
@@ -154,7 +149,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Filters -->
 <div id="mySidenav" class="sidenav">

@@ -198,6 +198,10 @@ p {
   margin: 0;
 }
 
+.pagination li {
+  cursor: pointer;
+}
+
 .pagination li a {
   color: #999;
   background-color: #e7e7e7;
@@ -207,6 +211,7 @@ p {
   border: none;
   transition: all 0.3s ease 0s;
   padding: 10px 15px 10px 15px;
+  cursor: pointer;
 }
 
 .pagination li a:hover,
@@ -218,6 +223,12 @@ p {
 
 .pagination li.active a:hover {
   background-color: seagreen;
+}
+
+.pagination li.disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 @media only screen and (max-width: 767px) {
@@ -247,6 +258,10 @@ p {
   width: 100%;
 }
 
+.panel-body table tbody input[type="checkbox"]:checked::after {
+  background-color: seagreen !important;
+}
+
 .panel-body .action-list .edit-btn {
   color: white !important;
   background-color: mediumseagreen !important;
@@ -257,10 +272,277 @@ p {
   background-color: seagreen !important;
 }
 
-.table tbody .dept-view a {
+.panel-body .action-list .no-btn {
+  color: #333 !important;
+  background-color: #ccc !important;
+  border: 1px solid #ccc !important;
+}
+
+.panel-body .action-list .restore-btn {
+  color: white !important;
+  background-color: mediumseagreen !important;
+  border-color: mediumseagreen !important;
+}
+
+.panel-body .table tbody .dept-view a {
   color: mediumseagreen !important;
 }
 
-.table tbody td:last-child a {
+.panel-body table tbody td:last-child a {
   color: mediumseagreen !important;
+}
+
+.btn-action-search {
+  cursor: pointer;
+  color: white;
+  background-color: mediumseagreen;
+}
+
+.btn-action-search:hover {
+  background-color: darkgreen;
+}
+
+.btn-action-clear {
+  cursor: pointer;
+  color: crimson;
+  background-color: white;
+}
+
+.btn-action-clear:hover {
+  color: white;
+  background-color: crimson;
+}
+
+.btn-action-filters {
+  cursor: pointer;
+  color: #ccc;
+  background-color: white;
+}
+
+.btn-action-filters:hover {
+  color: white;
+  background-color: #ccc;
+}
+
+.btn-action-reset {
+  cursor: pointer;
+  color: #333;
+  background-color: #f1f1f1;
+  padding: 5px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+}
+
+.btn-action-reset:hover {
+  background-color: #ccc;
+}
+
+.btn-action-apply {
+  cursor: pointer;
+  color: white;
+  background-color: mediumseagreen;
+  padding: 5px;
+  border: 1px solid mediumseagreen;
+  border-radius: 5px;
+}
+
+.btn-action-apply:hover {
+  background-color: seagreen;
+}
+
+/* delete/restore modal css styles */
+.modal-box {
+  font-family: "Roboto", sans-serif;
+}
+
+.modal-box .show-modal {
+  color: #fff;
+  background-color: #e74c3c;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 10px 15px;
+  margin: 80px auto 0;
+  border: none;
+  outline: none;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.4);
+  display: block;
+}
+
+.modal-box .show-modal:hover {
+  color: #fff;
+  /* background-color: #7386d5; */
+  border: none;
+}
+
+.modal-backdrop.in {
+  opacity: 0;
+}
+
+.modal-box .modal {
+  top: 90px !important;
+}
+
+.modal-box .modal-dialog {
+  width: 550px;
+  margin: 20px auto 10px;
+}
+
+.modal-box .modal-dialog .modal-content {
+  /* background: linear-gradient(to bottom, #7386d5, #7386d5); */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-box .modal-dialog .modal-content .close {
+  color: mediumseagreen;
+  background-color: #fff;
+  font-size: 30px;
+  line-height: 25px;
+  height: 27px;
+  width: 27px;
+  opacity: 1;
+  border-radius: 50%;
+  position: absolute;
+  left: auto;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  transition: all 0.3s;
+}
+
+.modal-box .modal-dialog .modal-content .close:hover {
+  color: #fff;
+  background-color: seagreen;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body {
+  /* padding: 30px 20px 10px !important; */
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .icon {
+  color: limegreen;
+  font-size: 80px;
+  line-height: 80px;
+  margin: 0 auto 10px;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .title {
+  /* color: #fff; */
+  font-size: 25px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 0 30px 0;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .description {
+  /* color: #fff; */
+  font-size: 20px;
+  margin: 0 0 30px;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .subscribe {
+  color: #fff;
+  background-color: #2ecc71;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px 50px;
+  margin: 0 10px 10px 0;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .subscribe:hover {
+  background-color: #27ae60;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .subscribe.cancel {
+  background-color: #e7e7e7;
+}
+
+.modal-box .modal-dialog .modal-content .modal-body .subscribe.cancel:hover {
+  background-color: #e2e2e2;
+}
+
+@media only screen and (max-width: 576px) {
+  .modal-dialog {
+    width: 93% !important;
+  }
+}
+
+.page-disable {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+input[type="checkbox"] {
+  width: 20px !important;
+  text-align: center;
+  /* height: 20px !important; */
+}
+
+
+/* css filters styles */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav h5 {
+  color: #ccc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.sidenav .closebtn {
+  cursor: pointer;
+  position: absolute;
+  top: -15px;
+  right: 0;
+  font-size: 36px;
+  margin-top: 15px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+label {
+  color: #333;
+  font-weight: 600;
 }

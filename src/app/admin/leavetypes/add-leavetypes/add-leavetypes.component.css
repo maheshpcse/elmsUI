@@ -39,7 +39,7 @@ p {
   margin-top: 100px;
 }
 
-.dept-card .btn {
+.leave-card .btn {
   display: inline-block;
   line-height: 50px;
   padding: 0 50px;
@@ -55,24 +55,32 @@ p {
   font-family: inherit;
 }
 
-.dept-card .btn--radius {
+.leave-card .btn--radius {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
 
-.dept-card .btn--radius-2 {
+.leave-card .btn--radius-2 {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
 
-.dept-card .btn--red {
+.leave-card .btn--green {
   background: mediumseagreen;
 }
 
-.dept-card .btn--red:hover {
+.leave-card .btn--green:hover {
   background: seagreen;
+}
+
+.leave-card .btn--grey {
+  background: #ccc;
+}
+
+.leave-card .btn--grey:hover {
+  background: #999;
 }
 
 h2.title {
@@ -81,6 +89,15 @@ h2.title {
 
 input {
   height: 45px !important;
+}
+
+.is-error:focus {
+  border: 1px solid crimson;
+}
+
+.is-error-note {
+  color: crimson;
+  font-size: 0.85em;
 }
 
 textarea {

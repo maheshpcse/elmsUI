@@ -33,7 +33,8 @@ export class ManageEmployeesComponent implements OnInit {
     ];
     employeesCount: any = 0;
     editEmpItem: any = {};
-
+    departmentsList: any = [];
+    
     constructor(
         public router: Router,
         public authAdminService: AuthAdminService,
@@ -46,6 +47,7 @@ export class ManageEmployeesComponent implements OnInit {
             $('[data-toggle="tooltip"]').tooltip();
         });
         this.getEmployeesList();
+        this.getAllDepartmentsList();
     }
 
     onSearchEmployee() {
@@ -58,6 +60,8 @@ export class ManageEmployeesComponent implements OnInit {
         this.showFilter = !this.showFilter;
         if (this.showFilter) {
             document.getElementById("mySidenav").style.width = "260px";
+            this.getAllDepartmentsList();
+            this.filterDepartment = this.filterDepartment || null;
         } else {
             document.getElementById("mySidenav").style.width = "0";
         }
@@ -120,6 +124,19 @@ export class ManageEmployeesComponent implements OnInit {
         });
     }
 
+    getAllDepartmentsList() {
+        this.employeeApiService.getAllDepartmentsData().subscribe(async (response: any) => {
+            console.log('Get all departments list response isss', response);
+            if (response && response.success) {
+                this.departmentsList = response.data;
+            } else {
+                this.toastr.errorToastr(response.message);
+            }
+        }, (error: any) => {
+            this.toastr.errorToastr('Network failed, Please try again.');
+        });
+    }
+
     createPager() {
         let pageCount = (Number(this.count) % Number(this.limit) == 0) ? (Number(this.count) / Number(this.limit)) : (Number(this.count) / Number(this.limit)) + 1;
         console.log('pageCount isss:', pageCount);
@@ -156,7 +173,7 @@ export class ManageEmployeesComponent implements OnInit {
     }
 
     updateEmployee(item?: any) {
-        this.router.navigate(['/add-employee'], { queryParams: { userId: Number(item['userId']) }});
+        this.router.navigate(['/add-employee'], { queryParams: { userId: Number(item['userId']) } });
     }
 
     deactivateRestoreEmployee() {

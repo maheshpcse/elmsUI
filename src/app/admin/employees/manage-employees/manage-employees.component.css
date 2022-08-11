@@ -170,7 +170,7 @@ p {
   border-top-right-radius: 10px;
 }
 
-.add-new {
+.card .card-heading .add-new {
   color: mediumseagreen;
   background-color: #fff;
 }

@@ -124,3 +124,11 @@ ng-multiselect-dropdown .dropdown-list {
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;
 }
+
+p-calendar .ui-calendar {
+  display: flex !important;
+}
+
+p-calendar .ui-calendar .ui-button.ui-button-icon-only .ui-button-text {
+  padding: 0.5em !important;
+}

@@ -35,7 +35,8 @@
                                         <div class="card-body">
                                             <div class="media d-flex">
                                                 <div class="media-body text-left">
-                                                    <h3 class="danger">12</h3>
+                                                    <h3 class="danger" *ngIf="!countSpinner">{{ dashboardCounts?.employees }}</h3>
+                                                    <h3 class="spinner" *ngIf="countSpinner"><i class="fas fa-circle-notch fa-spin"></i></h3>
                                                     <span>Employees</span>
                                                     <span class="mt-3 d-flex align-items-baseline">
                                                         <i class="fas fa-arrow-right"></i>
@@ -56,7 +57,8 @@
                                         <div class="card-body">
                                             <div class="media d-flex">
                                                 <div class="media-body text-left">
-                                                    <h3 class="success">13</h3>
+                                                    <h3 class="success" *ngIf="!countSpinner">{{ dashboardCounts?.departments }}</h3>
+                                                    <h3 class="spinner" *ngIf="countSpinner"><i class="fas fa-circle-notch fa-spin"></i></h3>
                                                     <span>Departments</span>
                                                     <span class="mt-3 d-flex align-items-baseline">
                                                         <i class="fas fa-arrow-right"></i>
@@ -77,7 +79,8 @@
                                         <div class="card-body">
                                             <div class="media d-flex">
                                                 <div class="media-body text-left">
-                                                    <h3 class="warning">14</h3>
+                                                    <h3 class="warning" *ngIf="!countSpinner">{{ dashboardCounts?.leavetypes }}</h3>
+                                                    <h3 class="spinner" *ngIf="countSpinner"><i class="fas fa-circle-notch fa-spin"></i></h3>
                                                     <span>Leave Types</span>
                                                     <span class="mt-3 d-flex align-items-baseline">
                                                         <i class="fas fa-arrow-right"></i>

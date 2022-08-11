@@ -11,39 +11,170 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" #applyLeaveForm="ngForm">
                             <div class="header">Apply To Leave</div>
                             <div class="form-content">
                                 <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <select class="form-control" name="leavetypename" id="leavetypeid" [(ngModel)]="leaveTypeId" required>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="leavetypename" id="leavetypeid" [disabled]="setDisable()"
+                                            [ngClass]="{'is-error': (leavetypename?.invalid && (leavetypename?.dirty || leavetypename?.touched)) && leavetypename?.errors?.required}"
+                                            [(ngModel)]="leaveTypeId" (change)="onSelectLeavetype(leaveTypeId)"
+                                            #leavetypename="ngModel" required>
                                             <option value="null" selected disabled>Select Leave Type :</option>
-                                            <option value="cl">Casual Leave</option>
-                                            <option value="sl">Sick Leave</option>
-                                            <option value="ml">Medical Leave</option>
+                                            <option [value]="item?.lt_Id"
+                                                *ngFor="let item of leaveTypesList; let i=index;">{{ item?.leaveTypeName
+                                                }}</option>
                                         </select>
+                                        <span class="is-error-note"
+                                            *ngIf="leavetypename?.invalid && (leavetypename?.dirty || leavetypename?.touched)">
+                                            <span *ngIf="leavetypename?.errors?.required">
+                                                Leave type is required.
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6 balance d-flex justify-content-start align-items-baseline">
+                                        <h6>Leave Balance</h6>
+                                        <span class="ml-3">:</span>
+                                        <p class="ml-3">{{ leaveBalance }}</p>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row mt-2">
                                     <div class="col-md-6">
-                                        <input type="date" class="form-control" name="startdatename" id="startdateId" placeholder="Select leave start date" [(ngModel)]="leaveStartDate">
+                                        <!-- <input type="date" class="form-control" name="startdatename" id="startdateId"
+                                            placeholder="Select leave start date"
+                                            [ngClass]="{'is-error': (startdatename?.invalid && (startdatename?.dirty || startdatename?.touched)) && startdatename?.errors?.required}"
+                                            [(ngModel)]="leaveStartDate" #startdatename="ngModel" required> -->
+                                        <p-calendar class="form-control start-date" name="startdatename"
+                                            id="startdateId" [(ngModel)]="leaveStartDate" [showIcon]="true"
+                                            [minDate]="minimumStartDate" [disabledDates]="invalidDates"
+                                            [readonlyInput]="true" dateFormat="yy-mm-dd"
+                                            [ngClass]="{'is-error': (startdatename?.invalid && (startdatename?.dirty || startdatename?.touched)) && startdatename?.errors?.required}"
+                                            #startdatename="ngModel" (onSelect)="onSelectStatDate($event)" required>
+                                            <ng-template pTemplate="date" let-date>
+                                                <span
+                                                    [ngStyle]="{backgroundColor: setColor(date) ? '#81C784' : 'inherit'}"
+                                                    style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">
+                                                    {{date.day}}
+                                                </span>
+                                            </ng-template>
+                                        </p-calendar>
+                                        <span class="is-error-note"
+                                            *ngIf="startdatename?.invalid && (startdatename?.dirty || startdatename?.touched)">
+                                            <span *ngIf="startdatename?.errors?.required">
+                                                Start date is required.
+                                            </span>
+                                        </span>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="date" class="form-control" name="enddatename" id="enddateId" placeholder="Select leave end date" [(ngModel)]="leaveEndDate">
+                                        <!-- <input type="date" class="form-control" name="enddatename" id="enddateId"
+                                            placeholder="Select leave end date"
+                                            [ngClass]="{'is-error': (enddatename?.invalid && (enddatename?.dirty || enddatename?.touched)) && enddatename?.errors?.required}"
+                                            [(ngModel)]="leaveEndDate" #enddatename="ngModel" required> -->
+                                        <p-calendar class="form-control end-date" name="enddatename" id="enddateId"
+                                            [(ngModel)]="leaveEndDate" [showIcon]="true" [minDate]="minimumEndDate"
+                                            [disabledDates]="invalidDates" [readonlyInput]="true" dateFormat="yy-mm-dd"
+                                            [ngClass]="{'is-error': (enddatename?.invalid && (enddatename?.dirty || enddatename?.touched)) && enddatename?.errors?.required}"
+                                            #enddatename="ngModel" required>
+                                            <ng-template pTemplate="date" let-date>
+                                                <span
+                                                    [ngStyle]="{backgroundColor: setColor(date) ? '#81C784' : 'inherit'}"
+                                                    style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">
+                                                    {{date.day}}
+                                                </span>
+                                            </ng-template>
+                                        </p-calendar>
+                                        <span class="is-error-note"
+                                            *ngIf="enddatename?.invalid && (enddatename?.dirty || enddatename?.touched)">
+                                            <span *ngIf="enddatename?.errors?.required">
+                                                End date is required.
+                                            </span>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row mt-2">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" name="reasonname" id="reasonnameId" placeholder="Type reason to leave" [(ngModel)]="leaveReason">
+                                        <!-- <input type="text" class="form-control" name="reasonname" id="reasonnameId" placeholder="Type reason to leave" [ngClass]="{'is-error': (reasonname?.invalid && (reasonname?.dirty || reasonname?.touched)) && reasonname?.errors?.required}" [(ngModel)]="leaveReason" #reasonname="ngModel" required> -->
+                                        <textarea class="form-control" cols="3" rows="3" name="reasonname"
+                                            id="reasonnameId" placeholder="Type reason to leave"
+                                            [ngClass]="{'is-error': (reasonname?.invalid && (reasonname?.dirty || reasonname?.touched)) && reasonname?.errors?.required}"
+                                            [(ngModel)]="leaveReason" #reasonname="ngModel" required>
+                                        </textarea>
+                                        <span class="is-error-note"
+                                            *ngIf="reasonname?.invalid && (reasonname?.dirty || reasonname?.touched)">
+                                            <span *ngIf="reasonname?.errors?.required">
+                                                Reason is required.
+                                            </span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="footer clearfix">
-                                <button type="submit" class="btn btn-default" (click)="applyLeave()">SAVE</button>
+                                <button type="submit" class="btn btn-default ml-2" [disabled]="applyLeaveForm.invalid"
+                                    (click)="openSubmitModal()">
+                                    {{ action | uppercase }}
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Update apply leave modal -->
+<div class="modal fade" id="submitReqModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" *ngIf="submitReq == 0">
+                <h5 class="modal-title" id="exampleModalLabel">{{ action == 'Save' ? 'Apply' : 'Update' }} Leave
+                    Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ng-container *ngIf="submitReq == 0 && !pageId">
+                    <p>Are you sure, you want to apply new leave?</p>
+                </ng-container>
+                <ng-container *ngIf="submitReq == 0 && pageId">
+                    <p>Are you sure, you want to update leave?</p>
+                </ng-container>
+                <ng-container *ngIf="submitReq == 1">
+                    <div class="text-center">
+                        <!-- <span><i class="fas fa-circle-notch fa-spin"></i></span> -->
+                        <div class="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-baseline justify-content-center text-center">
+                        <span>Your request is being processed,</span>
+                        <span class="ml-2">Please wait...</span>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="submitReq == 2">
+                    <div class="d-flex align-items-baseline justify-content-center text-center">
+                        <span>Your request is processed successfully.</span>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="submitReq == 3">
+                    <div class="d-flex align-items-baseline justify-content-center text-center">
+                        <span>Error while processing the request.</span>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="modal-footer" *ngIf="submitReq == 0 || submitReq == 2 || submitReq == 3">
+                <ng-container *ngIf="submitReq == 0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)="applyLeaveToEmployee()">Save changes</button>
+                </ng-container>
+                <ng-container *ngIf="submitReq == 2 || submitReq == 3">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </ng-container>
             </div>
         </div>
     </div>

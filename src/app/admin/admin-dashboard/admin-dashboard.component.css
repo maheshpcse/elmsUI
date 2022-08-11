@@ -212,6 +212,10 @@ p {
     color: seagreen;
 }
 
+.media .spinner {
+    color: #28a745;
+}
+
 /* delete modal css styles */
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
 

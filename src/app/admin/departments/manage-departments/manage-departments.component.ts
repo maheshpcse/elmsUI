@@ -5,6 +5,7 @@ import { DepartmentApisService } from 'src/app/api-services/department-apis.serv
 import { ToastrManager } from 'ng6-toastr-notifications';
 import * as _ from 'underscore';
 declare var $: any;
+
 @Component({
     selector: 'app-manage-departments',
     templateUrl: './manage-departments.component.html',
@@ -186,7 +187,7 @@ export class ManageDepartmentsComponent implements OnInit {
         this.submitReq = 0;
     }
 
-    updateEmployee(item?: any) {
+    updateDepartment(item?: any) {
         this.router.navigate(['/add-department'], { queryParams: { deptId: Number(item['deptId']) }});
     }
 

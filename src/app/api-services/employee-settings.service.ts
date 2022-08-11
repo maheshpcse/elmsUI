@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class LeavetypeApisService {
+export class EmployeeSettingsService {
 
     public role: any = sessionStorage.getItem('role');
     bSubject: any = new BehaviorSubject('default');
@@ -17,19 +17,15 @@ export class LeavetypeApisService {
         public router: Router
     ) { }
 
-    addUpdateLeavetypeData(data: any) {
-        return this.http.post<any>(APIURL.ADD_UPDATE_LEAVETYPE_DATA, data);
+    updateNewPasswordToEmployee(data: any) {
+        return this.http.post<any>(APIURL.UPDATE_NEW_PASSWORD_TO_EMPLOYEE, data);
     }
 
-    getLeavetypesData(data: any) {
-        return this.http.post<any>(APIURL.GET_LEAVETYPES_DATA, data);
+    getEmployeeProfileData(data: any) {
+        return this.http.post<any>(APIURL.GET_EMPLOYEE_PROFILE_DATA, data);
     }
 
-    geLeavetypeDataById(id: any) {
-        return this.http.get<any>(APIURL.GET_LEAVETYPE_DATA_BY_ID + `/${id}`);
-    }
-
-    updateLeavetypeStatus(data: any) {
-        return this.http.post<any>(APIURL.UPDATE_LEAVETYPE_STATUS, data);
+    updateEmployeeProfileData(data: any) {
+        return this.http.post<any>(APIURL.UPDATE_EMPLOYEE_PROFILE_DATA, data);
     }
 }

@@ -2,6 +2,7 @@
     CONTENT STYLE
 ----------------------------------------------------- */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -41,13 +42,15 @@ p {
 /* ---------------------------------------------------
     UPDATE PROFILE PAGE STYLE
 ----------------------------------------------------- */
-.form-bg{
+.form-bg {
   background: #e4e6e6;
 }
-form{
+
+form {
   font-family: 'Roboto', sans-serif;
 }
-.form-horizontal .header{
+
+.form-horizontal .header {
   background: #7386d5;
   padding: 30px 25px;
   font-size: 30px;
@@ -56,17 +59,20 @@ form{
   text-transform: uppercase;
   border-radius: 3px 3px 0 0;
 }
-.form-horizontal .heading{
+
+.form-horizontal .heading {
   font-size: 16px;
   color: #7386d5;
   margin: 10px 0 20px 0;
   text-transform: capitalize;
 }
-.form-horizontal .form-content{
+
+.form-horizontal .form-content {
   padding: 25px;
   background: #fff;
 }
-.form-horizontal .form-control{
+
+.form-horizontal .form-control {
   padding: 12px 16px 12px 39px;
   height: 50px;
   font-size: 14px;
@@ -77,11 +83,13 @@ form{
   box-shadow: none;
   margin-bottom: 15px;
 }
-.form-horizontal .form-control:focus{
+
+.form-horizontal .form-control:focus {
   border-color: #7386d5;
   box-shadow: none;
 }
-.form-horizontal .control-label{
+
+.form-horizontal .control-label {
   font-size: 17px;
   color: #ccc;
   position: absolute;
@@ -89,11 +97,22 @@ form{
   left: 27px;
   text-align: center;
 }
-.form-horizontal textarea.form-control{
+
+.form-horizontal textarea.form-control {
   resize: vertical;
   height: 130px;
 }
-.form-horizontal .btn{
+
+.is-error:focus {
+  border: 1px solid crimson;
+}
+
+.is-error-note {
+  color: crimson;
+  font-size: 0.85em;
+}
+
+.form-horizontal .btn {
   font-size: 18px;
   color: #4e4e4e;
   float: right;
@@ -103,7 +122,96 @@ form{
   padding: 10px 25px;
   transition: all 0.5s ease 0s;
 }
-.form-horizontal .btn:hover{
+
+.form-horizontal .btn:hover {
   background: #fff;
   border-color: #7386d5;
+}
+
+
+/* update profile data modal css styles */
+.modal .modal-header {
+  color: white;
+  background-color: #7386d5;
+  border-color: #7386d5;
+  border-bottom: none;
+}
+
+.modal .modal-header button {
+  color: white;
+}
+
+.modal .modal-body p {
+  font-size: 1em;
+}
+
+.modal .modal-body span {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.modal .btn-secondary {
+  cursor: pointer;
+  color: white;
+  background-color: #d1d1d1 !important;
+  border: none;
+}
+
+.modal .btn-primary {
+  cursor: pointer;
+  color: white;
+  background-color: cornflowerblue !important;
+  border: none;
+}
+
+.modal .btn-primary:hover {
+  background-color: #7386d5 !important;
+}
+
+.modal .modal-body .fa-circle-notch {
+  color: cornflowerblue;
+  font-size: 3em;
+  text-align: center !important;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid cornflowerblue;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: cornflowerblue transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

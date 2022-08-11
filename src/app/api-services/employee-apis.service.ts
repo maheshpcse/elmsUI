@@ -31,6 +31,10 @@ export class EmployeeApisService {
         return this.http.post<any>(APIURL.GET_EMPLOYEES_DATA, data);
     }
 
+    getAllDepartmentsData() {
+        return this.http.get<any>(APIURL.GET_ALL_DEPARTMENTS_DATA);
+    }
+
     getEmployeeDataById(id: any) {
         return this.http.get<any>(APIURL.GET_EMPLOYEE_DATA_BY_ID + `/${id}`);
     }

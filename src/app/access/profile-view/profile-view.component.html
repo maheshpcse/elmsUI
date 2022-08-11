@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="profile-designation">{{ employeeData?.designation }}</div>
                                     <div class="profile-department">{{ employeeData?.department }}</div>
-                                    <p class="profile-description">
+                                    <!-- <p class="profile-description">
                                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
                                         tempor.
                                     </p>
@@ -47,7 +47,7 @@
                                         <a href="" class="profile-info-list-item">
                                             <i class="mdi mdi-account"></i>About
                                         </a>
-                                    </ul>
+                                    </ul> -->
                                 </div>
                             </div>
                         </div>
@@ -143,6 +143,21 @@
                                         <span class="about-item-name">Marital Status</span>
                                         <span>:</span>
                                         <span class="about-item-detail">Single</span>
+                                    </li>
+                                </ul>
+                                <p class="card-description">Career Information</p>
+                                <ul class="about">
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-clipboard-account icon-sm"></i></span>
+                                        <span class="about-item-name">Designation</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">{{ employeeData?.designation }}</span>
+                                    </li>
+                                    <li class="about-items d-flex justify-content-between align-items-baseline">
+                                        <span><i class="mdi mdi-clipboard-account icon-sm"></i></span>
+                                        <span class="about-item-name">Department</span>
+                                        <span>:</span>
+                                        <span class="about-item-detail">{{ employeeData?.department }}</span>
                                     </li>
                                 </ul>
                             </div>

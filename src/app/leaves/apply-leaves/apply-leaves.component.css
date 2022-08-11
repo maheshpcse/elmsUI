@@ -2,6 +2,7 @@
     CONTENT STYLE
 ----------------------------------------------------- */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -44,9 +45,11 @@ p {
 .form-bg {
   /* background: linear-gradient(to right, #7cacdc, #e0e5eb); */
 }
+
 form {
   font-family: "Roboto", sans-serif;
 }
+
 .form-horizontal .header {
   background: #7386d5;
   padding: 30px 25px;
@@ -55,25 +58,36 @@ form {
   text-transform: uppercase;
   border-radius: 3px 3px 0 0;
 }
+
 .form-horizontal .form-content {
   padding: 25px;
   background: #f9fafd;
 }
+
 .form-horizontal .form-control {
   /* padding: 10px 50px 10px 15px; */
-  height: 50px;
+  /* height: 50px; */
   font-size: 18px;
   color: #000;
   border: 2px solid #acacac;
   margin-bottom: 15px;
 }
+
+.form-horizontal input,
+.start-date,
+.end-date {
+  height: 50px;
+}
+
 .form-horizontal .form-control:hover {
   border-color: #7386d5;
 }
+
 .form-horizontal .form-control:focus {
   border-color: #7386d5;
   box-shadow: none;
 }
+
 .form-horizontal .control-label {
   width: 42px;
   height: 40px;
@@ -85,9 +99,11 @@ form {
   right: 20px;
   text-align: center;
 }
+
 .form-horizontal .captcha {
   padding-right: 0;
 }
+
 .form-horizontal .captcha label {
   background: #e0e0e0;
   display: block;
@@ -98,17 +114,21 @@ form {
   text-align: center;
   border-radius: 3px 0 0 3px;
 }
+
 .form-horizontal .captcha-text {
   padding-left: 0;
 }
+
 .form-horizontal .captcha-text input {
   border-radius: 0 3px 3px 0;
 }
+
 .form-horizontal .footer {
   background: #e8eaf6;
   border-top: 1px solid #7386d5;
   padding: 10px 25px;
 }
+
 .form-horizontal .footer .btn {
   background: #7386d5;
   font-size: 18px;
@@ -119,14 +139,120 @@ form {
   padding: 10px 25px;
   transition: all 0.5s ease 0s;
 }
+
 .form-horizontal .name {
   padding: 10px 15px;
 }
+
+.form-horizontal .balance p {
+  color: #7386d5;
+  font-size: 1.2em;
+  padding: 5px;
+}
+
+.is-error:focus {
+  border: 1px solid crimson;
+}
+
+.is-error-note {
+  color: crimson;
+  font-size: 0.85em;
+}
+
 @media only screen and (max-width: 767px) {
   .form-horizontal .control-label i {
     line-height: 40px;
   }
+
   .form-horizontal .captcha label {
     font-size: 13px;
+  }
+}
+
+
+/* apply leave modal css styles */
+.modal .modal-header {
+  color: white;
+  background-color: #7386d5;
+  border-color: #7386d5;
+  border-bottom: none;
+}
+
+.modal .modal-header button {
+  color: white;
+}
+
+.modal .modal-body p {
+  font-size: 1em;
+}
+
+.modal .modal-body span {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.modal .btn-secondary {
+  cursor: pointer;
+  color: white;
+  background-color: #d1d1d1 !important;
+  border: none;
+}
+
+.modal .btn-primary {
+  cursor: pointer;
+  color: white;
+  background-color: cornflowerblue !important;
+  border: none;
+}
+
+.modal .btn-primary:hover {
+  background-color: #7386d5 !important;
+}
+
+.modal .modal-body .fa-circle-notch {
+  color: cornflowerblue;
+  font-size: 3em;
+  text-align: center !important;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid cornflowerblue;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: cornflowerblue transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

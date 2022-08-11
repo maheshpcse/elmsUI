@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthAdminService } from 'src/app/api-services/auth-admin.service';
 import { EmployeeApisService } from 'src/app/api-services/employee-apis.service';
-import * as moment from 'moment';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-employees-view',
@@ -63,7 +63,7 @@ export class EmployeesViewComponent implements OnInit {
     getEmployeeData() {
         this.spinner = true;
         this.employeeApiService.getEmployeeDataById(Number(this.pageId)).subscribe(async (response: any) => {
-            console.log('Get get employee data response isss', response);
+            console.log('Get employee data response isss', response);
             if (response && response.success) {
                 this.empData = response.data || {};
             } else {
